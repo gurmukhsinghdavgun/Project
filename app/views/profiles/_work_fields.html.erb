@@ -1,0 +1,18 @@
+<div class="nested-fields">
+  <%= f.label :companyName %><br>
+  <%= f.text_field :companyName %><br>
+
+  <%= f.label :position %><br>
+  <%= f.text_field :position %><br>
+
+  <%= f.label :startDate %><br>
+  <%= f.date_select :startDate, :order => [:day, :month, :year] %><br>
+
+  <%= f.label :finishDate %><br>
+  <%= f.date_select :finishDate, :order => [:day, :month, :year] %><br>
+
+  <%= f.label :workDescription %><br>
+  <%= f.text_area :workDescription %><br>
+
+  <%= link_to_remove_association "remove work experiance", f %>
+</div>

@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <%= f.label :university %><br>
+  <%= f.text_field :university %><br>
+
+  <%= f.label :course %><br>
+  <%= f.text_field :course %><br>
+
+  <%= f.label :level %><br>
+  <%= f.select :level, ['1st','2.1','2.2','3rd'] %><br>
+
+  <%= f.label :finishdate %><br>
+  <%= f.date_select :finishdate, :order => [:year] %><br>
+
+  <%= link_to_remove_association "remove education", f %>
+</div>

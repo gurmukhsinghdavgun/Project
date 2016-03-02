@@ -1,0 +1,60 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bio %><br>
+    <%= f.text_field :bio %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :all_skills, placeholder: "Seperate with comma" %>
+  </div>
+
+  <div id="educations">
+    <%= f.fields_for :educations do |education| %>
+      <%= render 'education_fields', f: education %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add education', f, :educations %>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="field">
+    <%= f.fields_for :portfolios do |portfolio| %>
+      <%= render partial: 'portfolio_fields', :f => portfolio  %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add image', f, :portfolios %>
+    </div>
+  </div>
+
+  <div class="works">
+    <%= f.fields_for :works do |work| %>
+      <%= render 'work_fields', f: work %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add work experiance', f, :works %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

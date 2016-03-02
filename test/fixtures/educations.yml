@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  university: MyString
+  course: MyString
+  finishdate: 2016-03-02
+  level: MyString
+  profile_id: 
+
+two:
+  university: MyString
+  course: MyString
+  finishdate: 2016-03-02
+  level: MyString
+  profile_id: 

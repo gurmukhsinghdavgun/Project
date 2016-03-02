@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user %>
+</p>
+
+<p>
+  <strong>Skills</strong>
+  <%= @profile.all_skills %>
+</p>
+
+<p>
+  <strong>educations</strong>
+  <% @profile.educations.each do |education| %>
+    <li>
+      <%= education.university %>
+      <%= education.course %>
+      <%= education.level %>
+      <%= education.finishdate %>
+    </li>
+  <% end %>
+</p>
+
+<p>
+  <strong>Work Experiance</strong>
+  <% @profile.works.each do |work| %>
+    <li>
+      <%= work.companyName %>
+      <%= work.position %>
+      <%= work.startDate %>
+      <%= work.finishDate %>
+      <%= work.workDescription %>
+    </li>
+  <% end %>
+</p>
+
+<strong>Portfolio</strong>
+<% @profile.portfolios.each do |portfolio| %>
+  <li>
+    <%= image_tag portfolio.picture.url(:medium) %>
+    <%= portfolio.description %>
+  </li>
+<% end %>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
