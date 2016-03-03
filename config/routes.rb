@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'recruiter/home'
   get 'developer/home'
   get 'home/index'
