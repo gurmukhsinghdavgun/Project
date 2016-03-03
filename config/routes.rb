@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'developer/home'
   get 'home/index'
 
+  
   resources :profiles
 
   root 'home#index'
