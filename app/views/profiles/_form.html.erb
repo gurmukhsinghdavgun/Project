@@ -29,7 +29,7 @@
   <div class="field">
     <%= f.label :phone %><br>
     <%= f.text_field :phone %>
-  </div>
+  </div><br>
 
   <div class="field">
     <%= f.hidden_field :user_id %>
@@ -37,6 +37,50 @@
 
   <div class="field">
     <%= f.text_field :all_skills, placeholder: "Seperate with comma" %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button :experiance, '1-2 Years' %>
+    <%= f.radio_button :experiance, '2-3 Years' %>
+    <%= f.radio_button :experiance, '3-4 Years' %>
+    <%= f.radio_button :experiance, '5-6 Years' %>
+    <%= f.radio_button :experiance, '6+ Years' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :willingToRelocate %>
+    <%= f.select :willingToRelocate, ['Yes', 'No'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :salary %>
+    <%= f.text_field :salary %>
+  </div>
+
+  <div class="field">
+    <%= f.label :TwitterLink %><br>
+    <%= f.text_field :TwitterLink %>
+  </div>
+  <div class="field">
+    <%= f.label :GithubLink %><br>
+    <%= f.text_field :GithubLink %>
+  </div>
+  <div class="field">
+    <%= f.label :StackLink %><br>
+    <%= f.text_field :StackLink %>
+  </div>
+  <div class="field">
+    <%= f.label :DribbbleLink %><br>
+    <%= f.text_field :DribbbleLink %>
+  </div>
+  <div class="field">
+    <%= f.label :MediumLink %><br>
+    <%= f.text_field :MediumLink %>
+  </div>
+
+  <div class="field">
+    <%= f.label :workAbroad %>
+    <%= f.select :workAbroad, ['Yes', 'No'] %>
   </div>
 
   <div id="educations">
