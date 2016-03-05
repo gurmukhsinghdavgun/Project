@@ -1,2 +1,9 @@
 <h1>Recruiter#home</h1>
 <p>Find me in app/views/recruiter/home.html.erb</p>
+
+<% if recruiter_signed_in? %>
+  <%= link_to "View Developers", profiles_path %>
+  <%= link_to "Logout", destroy_recruiter_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Register", new_recruiter_registration_path %>
+<% end %>

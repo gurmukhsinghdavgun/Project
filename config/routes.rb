@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :recruiters
   resources :cities
   resources :expertises
   devise_for :users
