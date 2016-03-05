@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
   has_many :educations
   has_many :portfolios
   has_many :works
+  has_and_belongs_to_many :expertises
+  has_and_belongs_to_many :cities
 
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true

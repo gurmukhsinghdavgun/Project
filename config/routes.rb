@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cities
+  resources :expertises
   devise_for :users
   get 'recruiter/home'
   get 'developer/home'

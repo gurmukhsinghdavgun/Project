@@ -113,6 +113,26 @@
     </div>
   </div>
 
+  <div class="field">
+    <%= f.label "Area of Expertise" %><br>
+    <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |b| %>
+      <div class="collection_check_boxe">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Cities you will to work in" %>
+    <%= f.collection_check_boxes :city_ids, City.all, :id, :name do |c| %>
+      <div class="collection_check_boxe">
+        <%= c.check_box %>
+        <%= c.label %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

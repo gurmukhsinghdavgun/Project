@@ -107,3 +107,17 @@
     <%= portfolio.description %>
   </li>
 <% end %>
+
+<strong>Expertise</strong>
+<% @profile.expertises.each do |e| %>
+  <li>
+    <%= e.name %>
+  </li>
+<% end %>
+
+<strong>Cities you want to work</strong>
+<% @profile.cities.each do |city| %>
+  <li>
+    <%= city.name %>
+  </li>
+<% end %>

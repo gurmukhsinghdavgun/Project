@@ -72,6 +72,7 @@ class ProfilesController < ApplicationController
         :willingToRelocate, :workAbroad, :salary, :UKauthorization, :TwitterLink, :GithubLink, :StackLink, :DribbbleLink, :MediumLink,
         :all_skills, educations_attributes: [:id, :university, :course, :finishdate, :level, :_destroy],
         portfolios_attributes: [:id, :description, :picture, :_destroy],
-        works_attributes: [:id, :companyName, :position, :startDate, :finishDate, :workDescription, :_destroy] )
+        works_attributes: [:id, :companyName, :position, :startDate, :finishDate, :workDescription, :_destroy],
+        expertise_ids:[], city_ids:[] )
     end
 end
