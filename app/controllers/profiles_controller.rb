@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   #below not working properly, look into nesting together
-  #before_action :authenticate_recruiter!, only: [:index, :show]
+  before_action :authenticate_recruiter!, only: [:index, :show]
   #this works better but still above requires user authenication
   #before_action :authenticate_user! || :authenticate_recruiter!
 
