@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :recruiters
+  devise_for :recruiters, controllers: {registrations: "recruiters/registrations"}
   resources :cities
   resources :expertises
   devise_for :users
   get 'recruiter/home'
   get 'developer/home'
   get 'home/index'
-
-  
+  get 'skills/:skill', to: 'profiles#index', as: "skill"
   resources :profiles
 
   root 'home#index'

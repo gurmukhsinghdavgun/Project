@@ -1,14 +1,18 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  #below not working properly, look into nesting together
-  before_action :authenticate_recruiter!, only: [:index, :show]
-  #this works better but still above requires user authenication
-  #before_action :authenticate_user! || :authenticate_recruiter!
+  before_action :authenticate_person!, only: [:index, :show]
 
   def index
     @search = Profile.search(params[:q])
     @profiles = @search.result(distinct: true)
+
+    #if params[:skill]
+    #  @profiles = Profile.tagged_with(params[:id])
+  #  else
+    #  @profiles = Profile.all
+  #  end
+
   end
 
   def show
