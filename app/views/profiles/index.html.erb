@@ -1,5 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<div class="">
+  <%= search_form_for @search do |f| %>
+    <%= f.label "Search for skill" %><br>
+    <%= f.text_field :bio_cont, class: "form", placeholder: "Search for skill" %>
+    <br>
+    <%= f.label "Area of Expertise" %><br>
+    <%= f.collection_check_boxes :expertises_id_in_any, Expertise.all, :id, :name do |b| %>
+      <%= b.check_box %>
+      <%= b.label %>
+    <% end %><br>
+
+    <%= f.label "Find developer in which city" %><br>
+    <%= f.collection_check_boxes :cities_id_in_any, City.all, :id, :name do |b| %>
+      <%= b.check_box %>
+      <%= b.label %>
+    <% end %><br>
+
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
+
 <h1>Listing Profiles</h1>
 
 <table>

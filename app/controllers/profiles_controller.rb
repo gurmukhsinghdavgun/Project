@@ -7,7 +7,8 @@ class ProfilesController < ApplicationController
   #before_action :authenticate_user! || :authenticate_recruiter!
 
   def index
-    @profiles = Profile.all
+    @search = Profile.search(params[:q])
+    @profiles = @search.result(distinct: true)
   end
 
   def show
