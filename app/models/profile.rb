@@ -29,4 +29,6 @@ class Profile < ActiveRecord::Base
     Skill.find_by_name!(name).profiles
   end
 
+  is_impressionable
+
 end

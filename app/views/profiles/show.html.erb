@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= "#{@profile.impressionist_count} views so far!" %>
+
 <p>
   <strong>avatar</strong>
   <%= image_tag(@profile.avatar.url(:medium)) %>
