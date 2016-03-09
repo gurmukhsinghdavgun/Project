@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   resources :expertises
   devise_for :users
   get 'recruiter/home'
+  get 'recruiter/favoriteDevelopers'
   get 'developer/home'
   get 'home/index'
   get 'skills/:skill', to: 'profiles#index', as: "skill"
   resources :profiles
+  resources :favorite_profiles, only: [:create, :destroy]
 
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

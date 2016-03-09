@@ -128,3 +128,11 @@
     <%= city.name %>
   </li>
 <% end %>
+
+<% if recruiter_signed_in? %>
+  <%- unless current_recruiter.favorite_profiles.exists?(id: @profile.id) -%>
+    <%= link_to 'Add to favorites', favorite_profiles_path(profile_id: @profile), method: :post %>
+  <%- else -%>
+    <%= link_to 'Remove from favorites', favorite_profile_path(@profile), method: :delete %>
+  <%- end -%>
+<% end %>
