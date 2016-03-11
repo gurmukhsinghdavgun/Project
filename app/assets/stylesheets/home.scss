@@ -1,3 +1,31 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.topheader{
+  height: 600px;
+  background-color: white;
+
+  .headertext{
+    padding-top: 100px;
+    padding-left: 30px;
+    h1 {
+      font-family: 'Comfortaa', cursive;
+      line-height: 90%;
+    }
+    h2 {
+      font-family: 'Comfortaa', cursive;
+      padding-top: 30px;
+    }
+  }
+
+  .buttons{
+    padding-left: 30px;
+    padding-top: 40px;
+
+    .custom{
+      width: 140px;
+      border-radius: 0;
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      background-color: #674172;
+      outline-color: #674172;
+    }
+  }
+}

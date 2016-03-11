@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309145112) do
+ActiveRecord::Schema.define(version: 20160309203339) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160309145112) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "score"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"

@@ -1,15 +1,18 @@
-<div class="row top-header">
-    <div class="col-sm-12">
-      <h1>Home Page</h1>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-    </div>
+<div class="topheader">
+  <div class="headertext">
+    <p class="small">
+      <h1>The Developer Marketplace</h1>
+      <h1>Find a developer suited to your needs</h1>
+    </p>
+    <h2>Built for developers and recruiters</h2>
+  </div>
+  <div class="buttons">
+    <%= link_to developer_home_path do %>
+      <button type="button" class="btn btn-primary btn-lg btn-border custom ">Developers</button>
+    <% end %>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to recruiter_home_path do %>
+      <button type="button" class="btn btn-primary btn-lg btn-border leftbtn custom">Recruiters</button>
+    <% end %>
+  </div>
 </div>
