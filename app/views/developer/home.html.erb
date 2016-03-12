@@ -1,3 +1,51 @@
-<h1>Developer#home</h1>
-<p>Find me in app/views/developer/home.html.erb</p>
-<%= link_to "Register", new_user_registration_path %>
+
+<div class="header">
+  <h1>Let hundreds of employers see work</h1>
+  <h3>Show all your work and code visually to potential employers</h3>
+  <div class="button">
+    <%= link_to new_user_registration_path do %>
+      <button type="button" class="btn btn-primary btn-lg btn-border custom ">Sign up</button>
+    <% end %>
+  </div>
+</div>
+
+<div class="info1">
+  <div class="gitimage">
+    <%= image_tag("github.jpg", :size => "500x320") %>
+  </div>
+  <div class="info1text">
+    <h2>Connect to your github account and show your work</h2>
+    <h4>Display all the repositories you worked and and project you
+    you contributed to.</h4>
+  </div>
+</div>
+<hr>
+
+<div class="info2">
+  <div class="cvimage">
+    <%= image_tag("creative.jpg", :size => "350x400") %>
+  </div>
+  <div class="info2text">
+    <h2>Build your online creative CV</h2>
+    <h4>Paper CV's are getting outdated, for developers, recruiters want to see more than just your CV.</h4>
+    <h4>They want to see real work produced by developers.</h4>
+  </div>
+</div>
+<hr>
+
+<div class="info3">
+  <div class="info3text">
+    <h2>Are you ready to create you online CV?</h2>
+    <h4>get started by creating your account</h4>
+    <div class="button">
+      <%= link_to new_user_registration_path do %>
+        <button type="button" class="btn btn-primary btn-lg btn-border custom ">Developers</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr>
+
+<div class="footer">
+  <%= render 'partials/footer' %>
+</div>

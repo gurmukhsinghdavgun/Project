@@ -29,3 +29,78 @@
     }
   }
 }
+
+.developerHeader{
+  margin-top: 65px;
+  padding-right: 30px;
+
+  .bigHeader{
+    float: left;
+    h1{
+      padding-left: 30px;
+      padding-top: 78px;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+    }
+  }
+
+  .developerinformation{
+
+    h2{
+      font-family: 'Comfortaa', cursive;
+      font-size: 25px;
+      text-align: right;
+      line-height: 170%;
+
+      .icons{
+        color: #674172;
+      }
+    }
+  }
+}
+
+.recruiterHeader{
+  margin-top: 130px;
+  padding-right: 30px;
+
+  .bigHeader{
+
+    h1{
+      padding-left: 30px;
+      padding-top: 115px;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: right;
+    }
+  }
+
+  .recruiterinformation{
+    padding-left: 30px;
+    float: left;
+
+    h2{
+      font-family: 'Comfortaa', cursive;
+      font-size: 25px;
+      text-align: left;
+      line-height: 170%;
+
+      .icons{
+        color: #674172;
+      }
+    }
+  }
+}
+
+.footer{
+  margin-top: 150px;
+  h5{
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    color: #674172;
+
+  }
+  .socialbuttons{
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}

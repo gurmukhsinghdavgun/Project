@@ -1,3 +1,110 @@
-// Place all the styles related to the developer controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.header{
+  background-color: #674172;
+  height: 300px;
+  h1{
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+  }
+  h3{
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    color: white;
+  }
+  .button{
+    padding-top: 40px;
+    text-align: center;
+    .custom{
+      width: 140px;
+      border-radius: 0;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      background-color: white;
+      outline-color: #674172;
+    }
+  }
+}
+
+.info1{
+  height: 350px;
+
+  .gitimage{
+    float: left;
+    padding-left: 30px;
+    padding-top: 50px;
+  }
+  .info1text{
+    padding-left: 20px;
+    padding-right: 30px;
+    padding-top: 160px;
+    h2{
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: right;
+    }
+    h4{
+      padding-top: 20px;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: right;
+    }
+  }
+}
+
+.info2{
+
+  height: 390px;
+  .cvimage{
+    float: right;
+    padding-right: 30px;
+    padding-top: 10px;
+  }
+  .info2text{
+    padding-left: 30px;
+    padding-top: 180px;
+    h2{
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: left;
+    }
+    h4{
+      padding-top: 20px;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: left;
+    }
+  }
+}
+
+.info3{
+  height: 200px;
+  background-color: white;
+  .info3text{
+    padding-top: 20px;
+    .button{
+      padding-top: 10px;
+      padding-bottom: 40px;
+      text-align: center;
+      .custom{
+        width: 140px;
+        border-radius: 0;
+        font-family: 'Comfortaa', cursive;
+        color: white;
+        background-color: #674172;
+        outline-color: #674172;
+      }
+    }
+    h2{
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: center;
+    }
+    h4{
+      padding-top: 20px;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      text-align: center;
+    }
+  }
+}
