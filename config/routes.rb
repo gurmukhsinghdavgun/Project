@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :recruiters, controllers: {registrations: "recruiters/registrations"}
   resources :cities
   resources :expertises
-  devise_for :users
+  devise_for :users, controllers: {registrations: "users/registrations"}
   get 'recruiter/home'
   get 'recruiter/favoriteDevelopers'
   get 'developer/home'
