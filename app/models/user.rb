@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
+  after_create :build_profile
+
+  def build_profile
+    self.create_profile
+  end
+
 end
