@@ -1,3 +1,8 @@
+<div class="headersmall">
+    <h1>Edit you profile</h1>
+    <h4>take your time, employers will be looking</h4>
+</div>
+
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -11,155 +16,178 @@
   <% end %>
 
 <form>
+  <div class="form_holder">
+    <div class="forms-grouped">
 
-  <div class="form-group">
-    <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
-      <div class="col-sm-6">
-        <%= f.file_field :avatar %>
+      <div class="personal-details">
+        <h2>Personal Details</h2>
+        <h4>just to let employers know who you are</h4>
+        <div class="form-group">
+          <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+            <div class="col-sm-6">
+              <%= f.file_field :avatar %>
+            </div>
+        </div><br>
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <%= f.text_field :name, :class => "form-control", :placeholder => "John Doe"%>
+        </div>
+        <div class="form-group">
+          <label for="location">Where do you live?</label>
+          <%= f.text_field :location, :class => "form-control", :placeholder => "London" %>
+        </div>
+        <div class="form-group">
+          <label for="phone">Best number for employers to contact you on</label>
+          <%= f.text_field :phone, :class => "form-control", :placeholder => "12345678910" %>
+        </div>
       </div>
-  </div><br>
 
-  <div class="form-group">
-    <label for="Email">Small bio about yourself</label>
-    <%= f.text_area :bio, :class => "form-control", :id => "Email", :rows => "3",
-      :placeholder => "Im a passionate web developer within an keen interest in Ruby on Rails....."%>
-  </div>
-
-  <div class="form-group">
-    <label for="name">Full name</label>
-    <%= f.text_field :name, :class => "form-control", :placeholder => "John Doe"%>
-  </div>
-
-  <div class="form-group">
-    <label for="location">Where do you live?</label>
-    <%= f.text_field :location, :class => "form-control", :placeholder => "Which city do you live in?" %>
-  </div>
-
-  <div class="form-group">
-    <label for="phone">Best number for employers to contact you on</label>
-    <%= f.text_field :phone, :class => "form-control", :placeholder => "000-111-333-555" %>
-  </div><br>
-
-  <div class="field">
-    <%= f.hidden_field :user_id %>
-  </div>
-
-  <div class="field">
-    <label for="all_skills">Enter you skills</label>
-    <%= f.text_field :all_skills, :class => "form-control", placeholder: "Ruby,Java,Scala,iOS" %>
-  </div>
-
-  <div class="field">
-    <label for="experiance">Years of experiance developing</label><br>
-    <label class="checkbox-incline">
-      <%= f.radio_button :experiance, '1-2 Years', :type => "checkbox" %> 1-2 Years
-    </label>
-    <label class="checkbox-incline">
-      <%= f.radio_button :experiance, '2-3 Years', :type => "checkbox" %> 2-3 Years
-    </label>
-    <label class="checkbox-incline">
-      <%= f.radio_button :experiance, '3-4 Years', :type => "checkbox" %> 3-4 Years
-    </label>
-    <label class="checkbox-incline">
-      <%= f.radio_button :experiance, '5-6 Years', :type => "checkbox" %> 5-6 Years
-    </label>
-    <label class="checkbox-incline">
-      <%= f.radio_button :experiance, '6+ Years', :type => "checkbox" %> 6+ Years
-    </label>
-  </div>
-
-  <div class="field">
-    <label for="willingToRelocate">Are you willing to relocate?</label>
-    <%= f.select :willingToRelocate, ['Yes', 'No'], {}, :class => 'form-control' %>
-  </div>
-
-  <div class="field">
-    <label for="workAbroad">Would you like to work abroad?</label>
-    <%= f.select :workAbroad, ['Yes', 'No'], {}, :class => 'form-control' %>
-  </div>
-
-  <div class="form_group">
-    <label>Expected salary</label>
-    <label for="inputsalary" class="sr-only">Amount (in pounds)</label>
-      <div class="input-group">
-        <div class="input-group-addon">£</div>
-        <%= f.text_field :salary, :class => "form-control", :id => "inputsalary", :placeholder => "20,000" %>
-        <div class="input-group-addon">.00</div>
+      <div class="summary">
+        <h2>Summary</h2>
+        <h4>tell alittle about yourself</h4>
+        <div class="form-group">
+          <label for="Email">Small bio about yourself</label>
+          <%= f.text_area :bio, :class => "form-control", :id => "Email", :rows => "3",
+            :placeholder => "Im a passionate web developer and my main area of expertise is Ruby on Rails.....write abit more than this."%>
+        </div>
       </div>
-  </div>
 
-  <div class="field">
-    <label for="TwitterLink">Your twitter link</label>
-    <%= f.text_field :TwitterLink, :type => "url", :class => "form-control", :placeholder => "www.twitter.com/bestdev" %>
-  </div>
-  <div class="field">
-    <label for="Githublink">Your github link</label>
-    <%= f.text_field :GithubLink, :type => "url", :class => "form-control", :placeholder => "www.github.com/bestdev" %>
-  </div>
-  <div class="field">
-    <label for="StackLink">Your stackoverflow link</label>
-    <%= f.text_field :StackLink, :type => "url", :class => "form-control", :placeholder => "www.stackoverflow.com/bestdev" %>
-  </div>
-  <div class="field">
-    <label for="DribbbleLink">Your dribbble link</label>
-    <%= f.text_field :DribbbleLink, :type => "url", :class => "form-control", :placeholder => "www.dribbble.com/bestdev" %>
-  </div>
-  <div class="field">
-    <label for="MediumLink">Your medium link</label>
-    <%= f.text_field :MediumLink, :type => "url", :class => "form-control", :placeholder => "www.medium.com/bestdev" %>
-  </div>
+      <div class="skills">
+        <h2>Skills</h2>
+        <h4>let employers know how good you are</h4>
+        <div class="field">
+          <label for="all_skills">Enter you skills</label>
+          <%= f.text_field :all_skills, :class => "form-control", placeholder: "seperate skills with a comma => Ruby,Java,Scala,iOS" %>
+        </div>
+        <div class="field">
+          <label for="experiance">Years of experiance developing</label><br>
+          <label class="checkbox-incline">
+            <%= f.radio_button :experiance, '1-2 Years', :type => "checkbox" %> 1-2 Years
+          </label>
+          <label class="checkbox-incline">
+            <%= f.radio_button :experiance, '2-3 Years', :type => "checkbox" %> 2-3 Years
+          </label>
+          <label class="checkbox-incline">
+            <%= f.radio_button :experiance, '3-4 Years', :type => "checkbox" %> 3-4 Years
+          </label>
+          <label class="checkbox-incline">
+            <%= f.radio_button :experiance, '5-6 Years', :type => "checkbox" %> 5-6 Years
+          </label>
+          <label class="checkbox-incline">
+            <%= f.radio_button :experiance, '6+ Years', :type => "checkbox" %> 6+ Years
+          </label>
+        </div>
+        <div class="field">
+          <%= f.label "Area of Expertise" %><br>
+          <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |b| %>
+            <div class="collection_check_boxe">
+              <%= b.check_box %>
+              <%= b.label %>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
+      <div class="job-preferences">
+        <h2>Job Preferences</h2>
+        <h4>tell employers what your looking for</h4>
+        <div class="field">
+          <label for="willingToRelocate">Are you willing to relocate?</label>
+          <%= f.select :willingToRelocate, ['Yes', 'No'], {}, :class => 'form-control' %>
+        </div>
+        <div class="field">
+          <label for="workAbroad">Would you like to work abroad?</label>
+          <%= f.select :workAbroad, ['Yes', 'No'], {}, :class => 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label "Cities you will to work in" %>
+          <%= f.collection_check_boxes :city_ids, City.all, :id, :name do |c| %>
+            <div class="collection_check_boxe">
+              <%= c.check_box %>
+              <%= c.label %>
+            </div>
+          <% end %>
+        </div>
+        <div class="form_group">
+          <label>Expected salary</label>
+          <label for="inputsalary" class="sr-only">Amount (in pounds)</label>
+            <div class="input-group">
+              <div class="input-group-addon">£</div>
+              <%= f.text_field :salary, :class => "form-control", :id => "inputsalary", :placeholder => "20,000" %>
+              <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+      </div>
 
-  <div id="educations">
-    <%= f.fields_for :educations do |education| %>
-      <%= render 'partials/education_fields', f: education %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add education', f, :educations %>
+      <div class="social-links">
+        <h2>Social Accounts</h2>
+        <h4>let employers know the real you</h4>
+        <div class="field">
+          <label for="TwitterLink">Your twitter link</label>
+          <%= f.text_field :TwitterLink, :type => "url", :class => "form-control", :placeholder => "www.twitter.com/bestdev" %>
+        </div>
+        <div class="field">
+          <label for="Githublink">Your github link</label>
+          <%= f.text_field :GithubLink, :type => "url", :class => "form-control", :placeholder => "www.github.com/bestdev" %>
+        </div>
+        <div class="field">
+          <label for="StackLink">Your stackoverflow link</label>
+          <%= f.text_field :StackLink, :type => "url", :class => "form-control", :placeholder => "www.stackoverflow.com/bestdev" %>
+        </div>
+        <div class="field">
+          <label for="DribbbleLink">Your dribbble link</label>
+          <%= f.text_field :DribbbleLink, :type => "url", :class => "form-control", :placeholder => "www.dribbble.com/bestdev" %>
+        </div>
+        <div class="field">
+          <label for="MediumLink">Your medium link</label>
+          <%= f.text_field :MediumLink, :type => "url", :class => "form-control", :placeholder => "www.medium.com/bestdev" %>
+        </div>
+      </div>
+
+      <div class="educationsfield">
+        <h2>Education</h2>
+        <h4>what have you studied?</h4>
+        <div id="educations">
+          <%= f.fields_for :educations do |education| %>
+            <%= render 'partials/education_fields', f: education %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'add education', f, :educations %>
+          </div>
+        </div>
+      </div>
+
+      <div class="workfield">
+        <h2>Work History</h2>
+        <h4>where are you worked?</h4>
+        <div class="works">
+          <%= f.fields_for :works do |work| %>
+            <%= render 'partials/work_fields', f: work %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'add work experiance', f, :works %>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfoliofield">
+        <h2>Portfolio</h2>
+        <h4>show off your work</h4>
+        <div class="field">
+          <%= f.fields_for :portfolios do |portfolio| %>
+            <%= render partial: 'partials/portfolio_fields', :f => portfolio  %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'add image', f, :portfolios %>
+          </div>
+        </div>
+      </div>
+
+      <div class="submitbutton">
+        <%= f.submit %>
+      </div>
+
     </div>
   </div>
-
-  <div class="field">
-    <%= f.fields_for :portfolios do |portfolio| %>
-      <%= render partial: 'partials/portfolio_fields', :f => portfolio  %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add image', f, :portfolios %>
-    </div>
-  </div>
-
-  <div class="works">
-    <%= f.fields_for :works do |work| %>
-      <%= render 'partials/work_fields', f: work %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add work experiance', f, :works %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label "Area of Expertise" %><br>
-    <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |b| %>
-      <div class="collection_check_boxe">
-        <%= b.check_box %>
-        <%= b.label %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label "Cities you will to work in" %>
-    <%= f.collection_check_boxes :city_ids, City.all, :id, :name do |c| %>
-      <div class="collection_check_boxe">
-        <%= c.check_box %>
-        <%= c.label %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
 </form>
 <% end %>

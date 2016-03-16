@@ -1,4 +1,47 @@
-// Place all the styles related to the Profiles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-/*Colors*/
+.headersmall{
+  background-color: #674172;
+  height: 200px;
+  h1{
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    padding-top: 60px;
+    text-align: center;
+  }
+  h4{
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    text-align: center;
+  }
+}
+
+.form_holder{
+  width: 100%;
+  h2{
+    font-family: 'Comfortaa', cursive;
+    color: #674172;
+    text-align: center;
+  }
+  h4{
+    font-family: 'Comfortaa', cursive;
+    color: #674172;
+    text-align: center;
+  }
+  label{
+    font-family: 'Comfortaa', cursive;
+    color: #674172;
+  }
+
+  .forms-grouped{
+    width: 50%;
+    margin: auto;
+    .form-control{
+      border-radius: 0;
+      font-family: 'Comfortaa', cursive;
+      font-size: 12px;
+    }
+
+    .personal-details{
+
+    }
+  }
+}
