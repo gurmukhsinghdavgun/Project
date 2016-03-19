@@ -1,68 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="headerindex">
+  <h1>Find your next developer</h1>
 
-<div class="search-field">
-  <legend>Search for candidates</legend>
-  <%= search_form_for @search do |f|%>
-    <div class="field">
-      <%= f.label :bio_cont, "Search skill" %>
-      <%= f.text_field :bio_cont %>
-    </div>
-    <div class="field">
-      <%= f.label :experiance_gt, "minimum years of experiance" %>
-      <%= f.text_field :experiance_gt %>
-    </div>
-    <div class="field">
-      <%= f.label "Area of Expertise" %><br>
-      <%= f.collection_check_boxes :expertises_id_in_any, Expertise.all, :id, :name do |b| %>
-        <div class="collection_check_box">
-          <%= b.check_box %>
-          <%= b.label %>
+  <div class="searchform data-no-turbolink">
+    <%= search_form_for @search do |f|%>
+      <div class="field">
+          <div class="input-group col-md-12">
+            <%= f.text_field :bio_cont, class: "form-control input-lg skillbar custom", placeholder: "search for a skill e.g. Ruby Developer" %>
+          </div>
+      </div><br>
+      <div class="field">
+        <div class="input-group col-md-12">
+          <%= f.text_field :experiance_gt, class: "form-control input-lg noexperiancebar custom", placeholder: "Mimimum years of experiance e.g. 2 Years" %>
         </div>
-      <% end %>
-    </div>
-    <div class="field">
-      <%= f.label "City searching for developer " %><br>
-      <%= f.collection_check_boxes :cities_id_in_any, City.all, :id, :name do |b| %>
-        <div class="collection_check_box">
-          <%= b.check_box %>
-          <%= b.label %>
-        </div>
-      <% end %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Search" %>
-    </div>
-  <% end %>
+      </div>
+      <div class="aofexpertise">
+        <%= f.label "Area of Expertise" %><br>
+        <%= f.collection_check_boxes :expertises_id_in_any, Expertise.all, :id, :name do |b| %>
+          <div class="collection_check_boxes">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+      </div><br>
+      <div class="aofcity">
+        <%= f.label "City searching for developer " %><br>
+        <%= f.collection_check_boxes :cities_id_in_any, City.all, :id, :name do |b| %>
+          <div class="collection_check_boxes">
+            <%= b.check_box %>
+            <%= b.label %>
+          </div>
+        <% end %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Search" %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
-<h1>Listing Profiles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Bio</th>
-      <th>Skills</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div class="profilefull">
+  <div class="profilescontainer">
     <% @profiles.each do |profile| %>
-      <tr>
-        <td><%= profile.bio %></td>
-        <td><%= raw tag_links (profile.all_skills) %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="eachprofile">
+        <aside class="profile-card">
+          <header>
+            <%= link_to profile do %>
+              <%= image_tag profile.image.url(:medium) %>
+            <% end %>
+            <h1><%= profile.name %></h1>
+            <h2>WEB DESIGNER</h2>
+          </header>
+          <div class="profile-bio">
+            <p>"<%= profile.shortbio %>"</p>
+          </div>
+        </aside>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Profile', new_profile_path %>
-
-<aside class="profile-card">
-
-  
+  </div>
+</div>

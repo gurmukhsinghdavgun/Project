@@ -25,11 +25,8 @@
         <hr>
         <div class="customgap">
           <div class="form-group">
-            <form class="form">
-              <div class="file-upload-wrapper" data-text="Upload your avatar!">
-                <%= f.file_field :avatar, :name => "file-upload-field", :type => "file", :class => "file-upload-field", :value =>"" %>
-              </div>
-            </form>
+            <%= f.label :image %><br />
+            <%= f.file_field :image %>
           </div><br>
           <div class="form-group">
             <label for="name">Full name</label>
@@ -89,17 +86,19 @@
             <label class="radioholder">
               <%= f.radio_button :experiance, '7+ Years', :type => "checkbox" %> 6+ Years
             </label>
-          </div>
+          </div><br>
 
-          <div class="field">
-            <%= f.label "Area of Expertise" %><br>
+
+          <%= f.label "Area of Expertise" %><br>
+          <div class="aofexpertise">
             <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |b| %>
-              <div class="collection_check_boxe">
+              <div class="collection_check_boxes">
                 <%= b.check_box %>
                 <%= b.label %>
               </div>
             <% end %>
           </div>
+
         </div>
       </div>
 
@@ -117,7 +116,7 @@
               <%= f.select :workAbroad, ['Yes', 'No'], {}, :class => 'form-control' %>
             </div>
             <div class="field">
-              <%= f.label "Cities you will to work in" %>
+              <%= f.label "Cities your willing to work in" %>
               <%= f.collection_check_boxes :city_ids, City.all, :id, :name do |c| %>
                 <div class="collection_check_boxe">
                   <%= c.check_box %>
@@ -183,7 +182,7 @@
 
       <div class="workfield">
         <h2>Work History</h2>
-        <h4>where are you worked?</h4>
+        <h4>where have you worked?</h4>
         <hr>
         <div class="customgap">
           <div class="works">
@@ -214,7 +213,7 @@
       </div>
 
       <div class="submitbutton">
-        <%= f.submit %>
+        <%= f.submit "Update Account", :class => "btn btn-primary btn-lg btn-border custom" %>
       </div>
 
     </div>

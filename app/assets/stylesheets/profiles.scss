@@ -13,6 +13,58 @@
     text-align: center;
   }
 }
+.headerindex{
+  background-color: #674172;
+  h1{
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    padding-top: 60px;
+    text-align: center;
+  }
+  h4{
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    text-align: center;
+  }
+
+  .searchform{
+    width: 50%;
+    margin: 0 auto;
+    background-color: #674172;
+
+    .custom{
+      font-family: 'Comfortaa', cursive;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .skillbar{
+      width: 50%;
+    }
+
+    .noexperiancebar{
+      width: 50%;
+    }
+
+    .aofexpertise{
+      padding-left: 60px;
+
+    }
+    .aofcity{
+      padding-top: 20px;
+      padding-left: 60px;
+    }
+
+    .collection_check_boxes{
+      display: block;
+      float: left;
+      width: 30%;
+      font-family: 'Comfortaa', cursive;
+      color: white;
+    }
+
+  }
+}
 
 .form_holder{
   width: 100%;
@@ -110,6 +162,14 @@
         	background-color: #674172;
         }
       }
+      .aofexpertise{
+        padding-left: 60px;
+        .collection_check_boxes{
+          display: block;
+          float: left;
+          width: 30%;
+        }
+      }
     }
     .file-upload-wrapper {
       position: relative;
@@ -178,4 +238,153 @@
       outline-color: #674172;
     }
   }
+  .job-preferences{
+    padding-top: 180px;
+
+  }
+  .submitbutton{
+    padding-top: 50px;
+    width: 25%;
+    margin: auto;
+    .custom{
+      width: 170px;
+      border-radius: 0;
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      background-color: #674172;
+      outline-color: #674172;
+    }
+  }
+}
+
+img{
+  max-width:100%;
+}
+.profile-card{
+  position:relative;
+  width:250px;
+  height: 300px;
+  padding:40px 30px 10px;
+  background:#674172;
+  text-align:center;
+  border-radius:4px;
+  transition: all 200ms ease;
+}
+
+.profile-card:hover{
+  box-shadow: 0px 30px 60px -5px rgba(55,55,71,0.3);
+  transform: translate3d(0,-5px,0);
+  .mask-shadow{
+    opacity:1;
+    box-shadow: 0px 30px 60px -5px rgba(55,55,71,0.3);
+    position:absolute;
+  }
+}
+.profile-card header{
+  display:block;
+  margin-bottom:10px;
+}
+.profile-card header a{
+  width:150px;
+  height:150px;
+  display:block;
+  border-radius:100%;
+  margin:-120px auto 0;
+  box-shadow: 0 0 0 5px white;
+}
+.profile-card header a img{
+  border-radius: 50%;
+  width:150px;
+  height:150px;
+}
+
+.profile-card:hover header a, .profile-card header a:hover{
+  animation: bounceOut .4s linear;
+  -webkit-animation: bounceOut .4s linear;
+}
+.profile-card header h1{
+  font-size:20px;
+  color:white;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+.profile-card header h2{
+  font-size:14px;
+  margin-top: 10px;
+  color:white;
+  text-transform:uppercase;
+  margin:0;
+}
+/*content*/
+.profile-bio{
+  font-size:14px;
+  color:#a5a5a5;
+  line-height:1.7;
+  font-style: italic;
+  margin-bottom:30px;
+}
+/*animation hover effect*/
+@-webkit-keyframes bounceOut {
+  0% {
+    box-shadow: 0 0 0 4px #82b541;
+    opacity: 1;
+  }
+  25% {
+    box-shadow: 0 0 0 1px #82b541;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 0 7px #82b541;
+    opacity: 1;
+  }
+  75% {
+    box-shadow: 0 0 0 4px #82b541;
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 0 5px #82b541;
+    opacity: 1;
+  }
+}
+@keyframes bounceOut {
+  0% {
+    box-shadow: 0 0 0 6px #82b541;
+    opacity: 1;
+  }
+  25% {
+    box-shadow: 0 0 0 2px #82b541;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 0 9px #82b541;
+    opacity: 1;
+  }
+  75% {
+    box-shadow: 0 0 0 3px #82b541;
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 0 5px #82b541;
+    opacity: 1;
+  }
+}
+
+  .profilescontainer{
+    margin-top: 50px;
+    width: 75%;
+    margin: 0 auto;
+
+    .eachprofile{
+      float: left;
+      padding-left: 10px;
+      margin-top: 100px;
+
+    }
+  }
+
+#login{
+  cursor: pointer;
+}
+
+.formwrapper{
 }

@@ -12,8 +12,8 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :portfolios
 
-  has_attached_file :avatar, :styles => {:medium => "300x300>"}
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def all_skills=(names)
     self.skills = names.split(",").map do |name|
@@ -27,6 +27,10 @@ class Profile < ActiveRecord::Base
 
   def self.tagged_with(name)
     Skill.find_by_name!(name).profiles
+  end
+
+  def shortbio
+    bio.length > 100? bio[0..100] + "..." : bio
   end
 
   is_impressionable
