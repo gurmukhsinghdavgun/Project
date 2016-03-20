@@ -1,47 +1,54 @@
-<div class="headerindex">
-  <h1>Find your next developer</h1>
+<div class="indexcontainer">
 
-  <div class="searchform data-no-turbolink">
-    <%= search_form_for @search do |f|%>
-      <div class="field">
-          <div class="input-group col-md-12">
-            <%= f.text_field :bio_cont, class: "form-control input-lg skillbar custom", placeholder: "search for a skill e.g. Ruby Developer" %>
+    <div class="searchform">
+      <h1>Find your next developer</h1>
+      <hr>
+      <div class="formscontainer">
+        <%= search_form_for @search do |f|%>
+          <div class="form-group">
+            <label class="formlabel" for="skill">Search skill:</label>
+            <%= f.text_field :bio_cont, class: "form-control custom", id: "skill", placeholder: "e.g. Ruby Developer" %>
           </div>
-      </div><br>
-      <div class="field">
-        <div class="input-group col-md-12">
-          <%= f.text_field :experiance_gt, class: "form-control input-lg noexperiancebar custom", placeholder: "Mimimum years of experiance e.g. 2 Years" %>
-        </div>
+          <div class="form-group">
+            <label class="formlabel" for="skill">Minimum years of experience:</label>
+            <%= f.text_field :experiance_gt, class: "form-control custom", placeholder: "e.g. 2 Years" %>
+          </div>
       </div>
+      <hr>
       <div class="aofexpertise">
-        <%= f.label "Area of Expertise" %><br>
-        <%= f.collection_check_boxes :expertises_id_in_any, Expertise.all, :id, :name do |b| %>
+        <%= f.label "Area of Expertise", class: "formlabel" %><br>
+          <%= f.collection_check_boxes :expertises_id_in_any, Expertise.all, :id, :name do |b| %>
           <div class="collection_check_boxes">
-            <%= b.check_box %>
-            <%= b.label %>
+            <li>
+              <%= b.check_box %>
+              <%= b.label %>
+            </li>
           </div>
         <% end %>
-      </div><br>
+      </div>
       <div class="aofcity">
-        <%= f.label "City searching for developer " %><br>
+      <hr>
+        <%= f.label "City searching for developer", class: "formlabel" %><br><br>
         <%= f.collection_check_boxes :cities_id_in_any, City.all, :id, :name do |b| %>
           <div class="collection_check_boxes">
-            <%= b.check_box %>
-            <%= b.label %>
+            <li>
+              <%= b.check_box %>
+              <%= b.label %>
+            </li>
           </div>
         <% end %>
       </div>
-      <div class="actions">
-        <%= f.submit "Search" %>
+
+      <div class="submitbutton">
+        <hr>
+        <div class="buttonpos">
+          <%= f.submit "Search", class: "btn btn-primary btn-lg btn-border custom" %>
+        </div>
       </div>
-    <% end %>
-  </div>
-
-</div>
+      <% end %>
+    </div>
 
 
-
-<div class="profilefull">
   <div class="profilescontainer">
     <% @profiles.each do |profile| %>
       <div class="eachprofile">
@@ -60,4 +67,5 @@
       </div>
     <% end %>
   </div>
+
 </div>
