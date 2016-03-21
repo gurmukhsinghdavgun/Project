@@ -1,26 +1,74 @@
-<h2>Log in</h2>
+<head>
+  <style media="screen">
+    .mainContainer{
+      height: 680px;
+      width: 100%;
+      background-color: #674172;
+    }
+    h1{
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      text-align: center;
+      padding-top: 70px;
+    }
+    h3{
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      text-align: center;
+      padding-top: 40px;
+    }
+    .formfields{
+      padding-top: 40px;
+      width: 30%;
+      margin: auto;
+      background-color: #674172;
+    }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    .customf{
+      font-family: 'Comfortaa', cursive;
+      font-size: 12px;
+      border-radius: 0;
+    }
+
+    .sbutton{
+      width: 40%;
+      margin: auto;
+      padding-top: 20px;
+    }
+    .custombtn{
+      width: 140px;
+      border-radius: 0;
+      font-family: 'Comfortaa', cursive;
+      color: #674172;
+      background-color: white;
+      outline-color: #674172;
+    }
+    .remebermestyle{
+      color: white;
+      font-family: 'Comfortaa', cursive;
+    }
+  </style>
+</head>
+
+<div class="mainContainer">
+  <h1>Log in</h1>
+  <div class="formfields">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="">
+        <%= f.email_field :email, class: "form-control customf", placeholder: "NAME@EXAMPLE.COM" %>
+      </div><br>
+      <div class="">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control customf", placeholder: "STRONG PASSWORD" %>
+      </div><br>
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "remebermestyle" %>
+        </div>
+      <% end -%>
+      <div class="sbutton">
+          <%= f.submit "Login", class: "btn btn-primary btn-lg btn-border custombtn" %>
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+  <% end %>
+</div>

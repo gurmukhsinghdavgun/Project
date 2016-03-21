@@ -49,7 +49,7 @@
     </div>
 
 
-  <div class="profilescontainer">
+  <div class="profilescontainer" data-no-turbolink="true">
     <% @profiles.each do |profile| %>
       <div class="eachprofile">
         <aside class="profile-card">
@@ -66,6 +66,7 @@
         </aside>
       </div>
     <% end %>
+    <%= will_paginate @profiles %>
   </div>
 
 </div>

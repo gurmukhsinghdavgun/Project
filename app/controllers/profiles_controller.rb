@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
 
   def index
     @search = Profile.search(params[:q])
-    @profiles = @search.result(distinct: true)
+    @profiles = @search.result(distinct: true).paginate(page: params[:page], per_page: params[:per_page])
 
     #if params[:skill]
     #  @profiles = Profile.tagged_with(params[:id])

@@ -37,6 +37,8 @@ class Profile < ActiveRecord::Base
 
   before_save :assign_score
 
+  self.per_page = 8
+
   def assign_score
     score = self.score || 0
     score += 3 if self.changes.include?(:bio) and self.bio.present?

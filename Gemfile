@@ -20,6 +20,9 @@ gem 'devise'
 gem 'ransack'
 gem 'impressionist'
 gem 'font-awesome-sass'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+gem 'will_paginate', '~> 3.0.6'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
