@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def self.create_with_omniauth(auth)
-    user = create! do |user|
+    user = first_or_create do |user|
       user.provider = auth['provider']
       user.uid = auth['uid']
       user.email = auth['info']['email']

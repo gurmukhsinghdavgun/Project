@@ -134,12 +134,12 @@
 <% end %>
 
 <div>
-    <h4>From: <%= current_user.github_profile.location %></h4>
-    <h4>Public Repos: <%= current_user.github_profile.public_repo %></h4>
-    <h4>Public Gists: <%= current_user.github_profile.public_gists %></h4>
-    <h4>Followers: <%= current_user.github_profile.followers %></h4>
-    <h4>Following: <%= current_user.github_profile.following %></h4>
-    <h4>Member Since: <%= Date.parse current_user.github_profile.member_since %></h4>
+    <h4>From: <%= @profile.user.github_profile.location %></h4>
+    <h4>Public Repos: <%= @profile.user.github_profile.public_repo %></h4>
+    <h4>Public Gists: <%= @profile.user.github_profile.public_gists %></h4>
+    <h4>Followers: <%= @profile.user.github_profile.followers %></h4>
+    <h4>Following: <%= @profile.user.github_profile.following %></h4>
+    <h4>Member Since: <%= Date.parse @profile.user.github_profile.member_since %></h4>
   </div>
 
   <h1>Public Repositories</h1>
