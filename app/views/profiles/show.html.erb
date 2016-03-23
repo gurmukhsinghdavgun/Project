@@ -133,6 +133,25 @@
   </li>
 <% end %>
 
+<div>
+    <h4>From: <%= current_user.github_profile.location %></h4>
+    <h4>Public Repos: <%= current_user.github_profile.public_repo %></h4>
+    <h4>Public Gists: <%= current_user.github_profile.public_gists %></h4>
+    <h4>Followers: <%= current_user.github_profile.followers %></h4>
+    <h4>Following: <%= current_user.github_profile.following %></h4>
+    <h4>Member Since: <%= Date.parse current_user.github_profile.member_since %></h4>
+  </div>
+
+  <h1>Public Repositories</h1>
+
+  <ul>
+    <% @repositories.each do |repo| %>
+      <li>
+        <p><b><%= repo[:name].capitalize %></b>: <i><%= repo[:description].capitalize %></i> <b>[Watchers: <%= repo[:watchers] %>, Forks: <%= repo[:forks]%>, Stargazers: <%= repo[:stargazers_count] %>]</b></p>
+      </li>
+    <% end %>
+  </ul>
+
 <% if recruiter_signed_in? %>
   <%- unless current_recruiter.favorite_profiles.exists?(id: @profile.id) -%>
     <%= link_to 'Add to favorites', favorite_profiles_path(profile_id: @profile), method: :post %>

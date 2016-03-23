@@ -18,6 +18,8 @@ class ProfilesController < ApplicationController
 
   def show
     impressionist(@profile)
+    client = Octokit::Client.new(:access_token => current_user.github_profile.access_token)
+    @repositories = client.repos
   end
 
   def new
