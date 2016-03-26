@@ -351,3 +351,44 @@
     }
   }
 }
+
+//profile show start
+.profileHeader{
+  .textfont{
+    font-family: 'Comfortaa', cursive;
+    color: white;
+    text-align: center;
+  }
+  .views{
+    text-align: right;
+    padding-right: 5px;
+    padding-top: 5px;
+  }
+  background-color: #674172;
+  height: 650px;
+  width: 100%;
+  .imageContainer{
+    text-align: center;
+    #headshot {
+    width: 220px;
+    padding: .5em;
+    margin-bottom: -3em;
+    border-radius: 50%;
+    background: #AEA8D3;
+  }
+}
+  .infoContainer{
+    padding-top: 15px;
+    hr{
+      width: 50%;
+      border-color: #AEA8D3;
+    }
+    h1{
+      font-size: 70px;
+    }
+  }
+  .sociallinks{
+    padding-top: 8px;
+    
+  }
+}

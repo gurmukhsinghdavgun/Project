@@ -18,8 +18,10 @@ class ProfilesController < ApplicationController
 
   def show
     impressionist(@profile)
-    client = Octokit::Client.new(:access_token => @profile.user.github_profile.access_token)
-    @repositories = client.repos
+    unless @profile.user.github_profile.nil?
+      client = Octokit::Client.new(:access_token => @profile.user.github_profile.access_token)
+      @repositories = client.repos
+    end
   end
 
   def new
@@ -70,7 +72,7 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:profile).permit(:bio, :user_id, :name, :image, :location, :phone, :experiance,
-        :willingToRelocate, :workAbroad, :salary, :UKauthorization, :TwitterLink, :GithubLink, :StackLink, :DribbbleLink, :MediumLink,
+        :willingToRelocate, :score, :workAbroad, :salary, :UKauthorization, :TwitterLink, :GithubLink, :StackLink, :DribbbleLink, :MediumLink,
         :all_skills, educations_attributes: [:id, :university, :course, :finishdate, :level, :_destroy],
         portfolios_attributes: [:id, :description, :picture, :_destroy],
         works_attributes: [:id, :companyName, :position, :startDate, :finishDate, :workDescription, :_destroy],

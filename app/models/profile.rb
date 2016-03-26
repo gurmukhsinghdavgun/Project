@@ -16,13 +16,13 @@ class Profile < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def all_skills=(names)
-    self.skills = names.split(",").map do |name|
+    self.skills = names.split("-").map do |name|
       Skill.where(name: name.strip).first_or_create!
     end
   end
 
   def all_skills
-    self.skills.map(&:name).join(",")
+    self.skills.map(&:name).join("-")
   end
 
   def self.tagged_with(name)
@@ -35,14 +35,56 @@ class Profile < ActiveRecord::Base
 
   is_impressionable
 
-  before_save :assign_score
-
   self.per_page = 8
 
-  def assign_score
-    score = self.score || 0
-    score += 3 if self.changes.include?(:bio) and self.bio.present?
-    self.score = score
-  end
+  def score
+   score = 0
 
+   if self.bio.present?
+     if self.bio.length < 100
+       score += 2
+     elsif self.bio.length > 200 && self.bio.length < 299
+       score += 4
+     elsif self.bio.length > 300
+       score += 5
+     end
+   else
+     score = 0
+   end
+
+   if self.image.present?
+     score += 5
+   end
+
+   if self.location.present?
+     score += 2
+   end
+
+   if self.phone.present?
+     score += 2
+   end
+
+   if self.TwitterLink.present?
+     score += 1
+   end
+
+   if self.GithubLink.present?
+     score += 2
+   end
+
+   if self.StackLink.present?
+     score += 2
+   end
+
+   if self.DribbbleLink.present?
+     score += 3
+   end
+
+   if self.MediumLink.present?
+     score += 3
+   end
+
+
+
+  end
 end

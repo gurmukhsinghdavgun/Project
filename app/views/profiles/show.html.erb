@@ -1,20 +1,79 @@
-<p id="notice"><%= notice %></p>
+<div class="profileHeader">
+  <h4 class="textfont views"><%= @profile.impressionist_count %> <i class="fa fa-eye"></i></h4>
+  <div class="imageContainer">
+    <%= image_tag @profile.image.url(:medium), id: "headshot", class: "imagepos" %>
+  </div>
+  <div class="infoContainer">
+    <br>
+    <h4 class="textfont"><%= "Score: #{@profile.score}" %></h4>
+    <h1 class="textfont"><%= @profile.name %></h1><hr>
+    <h2 class="textfont">Ruby on Rails Developer</h2>
+    <h4 class="textfont"><%= @profile.all_skills %></h4><hr>
+  </div>
+  <div class="sociallinks">
+    <h2 style= "text-align: center;">
+      <%= link_to ("http://#{@profile.TwitterLink}"),{style: "color: #AEA8D3"} do %>
+        <i class="fa fa-twitter fa-2x"></i>&nbsp;&nbsp;&nbsp;
+      <% end %>
+      <%= link_to ("http://#{@profile.GithubLink}"),{style: "color: #AEA8D3"} do %>
+        <i class="fa fa-github fa-2x"></i>&nbsp;&nbsp;&nbsp;
+      <% end %>
+      <%= link_to ("http://#{@profile.StackLink}"),{style: "color: #AEA8D3"} do %>
+        <i class="fa fa-stack-overflow fa-2x"></i>&nbsp;&nbsp;&nbsp;
+      <% end %>
+      <%= link_to ("http://#{@profile.DribbbleLink}"),{style: "color: #AEA8D3"} do %>
+        <i class="fa fa-dribbble fa-2x"></i>&nbsp;&nbsp;&nbsp;
+      <% end %>
+      <%= link_to ("http://#{@profile.MediumLink}"),{style: "color: #AEA8D3"} do %>
+        <i class="fa fa-medium fa-2x"></i>
+      <% end %>
+    </h2>
+  </div>
+</div>
 
-<%= "#{@profile.impressionist_count} views so far!" %>
-<!-- if recruiter_signed_in show this -->
-<p>
-<%= "Score:#{@profile.score}" %>
-</p>
+<div class="summary">
+  <p class=""><i><%= @profile.bio %></i></p>
+</div>
 
-<p>
-  <strong>avatar</strong>
-  <%= image_tag @profile.image.url(:medium) %>
-</p>
+<div class="secondContainer">
+  <div class="educationsContainer">
+    <% @profile.educations.each do |education| %>
+      <li>
+        <%= education.university %>
+        <%= education.course %>
+        <%= education.level %>
+        <%= education.finishdate %>
+      </li>
+    <% end %>
+  </div>
+  <div class="preferenceContainer">
+    <%= @profile.all_skills %>
+    <%= @profile.experiance %>
+    <%= @profile.willingToRelocate %>
+    <%= @profile.workAbroad %>
+  </div>
+</div>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @profile.bio %>
-</p>
+<div class="portfolioContainer">
+  <% @profile.portfolios.each do |portfolio| %>
+    <li>
+      <%= image_tag portfolio.picture.url(:medium) %>
+      <%= portfolio.description %>
+    </li>
+  <% end %>
+</div>
+
+<div class="workContainer">
+  <% @profile.works.each do |work| %>
+    <li>
+      <%= work.companyName %>
+      <%= work.position %>
+      <%= work.startDate %>
+      <%= work.finishDate %>
+      <%= work.workDescription %>
+    </li>
+  <% end %>
+</div>
 
 <p>
   <strong>User:</strong>
@@ -22,39 +81,17 @@
 </p>
 
 <p>
-  <strong>name:</strong>
-  <%= @profile.name %>
-</p>
-
-<p>
-  <strong>location:</strong>
-  <%= @profile.location %>
-</p>
-
-<p>
   <strong>phone:</strong>
   <%= @profile.phone %>
 </p>
 
-<p>
-  <strong>experiance:</strong>
-  <%= @profile.experiance %>
-</p>
-
-<p>
-  <strong>willingToRelocate:</strong>
-  <%= @profile.willingToRelocate %>
-</p>
+<h3 class="textfont"><%= @profile.location %></h3>
 
 <p>
   <strong>salary:</strong>
   <%= @profile.salary %>
 </p>
 
-<p>
-  <strong>workAbroad:</strong>
-  <%= @profile.workAbroad %>
-</p>
 
 <p>
   <strong>TwitterLink:</strong>
@@ -81,43 +118,7 @@
   <%= @profile.MediumLink %>
 </p>
 
-<p>
-  <strong>Skills</strong>
-  <%= @profile.all_skills %>
-</p>
 
-<p>
-  <strong>educations</strong>
-  <% @profile.educations.each do |education| %>
-    <li>
-      <%= education.university %>
-      <%= education.course %>
-      <%= education.level %>
-      <%= education.finishdate %>
-    </li>
-  <% end %>
-</p>
-
-<p>
-  <strong>Work Experiance</strong>
-  <% @profile.works.each do |work| %>
-    <li>
-      <%= work.companyName %>
-      <%= work.position %>
-      <%= work.startDate %>
-      <%= work.finishDate %>
-      <%= work.workDescription %>
-    </li>
-  <% end %>
-</p>
-
-<strong>Portfolio</strong>
-<% @profile.portfolios.each do |portfolio| %>
-  <li>
-    <%= image_tag portfolio.picture.url(:medium) %>
-    <%= portfolio.description %>
-  </li>
-<% end %>
 
 <strong>Expertise</strong>
 <% @profile.expertises.each do |e| %>
@@ -133,6 +134,7 @@
   </li>
 <% end %>
 
+<% unless @profile.user.github_profile.nil? %>
 <div>
     <h4>From: <%= @profile.user.github_profile.location %></h4>
     <h4>Public Repos: <%= @profile.user.github_profile.public_repo %></h4>
@@ -151,6 +153,7 @@
       </li>
     <% end %>
   </ul>
+<% end %>
 
 <% if recruiter_signed_in? %>
   <%- unless current_recruiter.favorite_profiles.exists?(id: @profile.id) -%>
