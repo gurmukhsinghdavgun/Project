@@ -389,6 +389,84 @@
   }
   .sociallinks{
     padding-top: 8px;
-    
+
+  }
+}
+
+.summary{
+  padding-top: 5px;
+  h1{
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    font-size: 70px;
+    color: #674172;
+  }
+  hr{
+    width: 70%;
+  }
+  .summarybox{
+    width: 80%;
+    margin: auto;
+    padding-bottom: 20px;
+    p{
+      font-family: 'Comfortaa', cursive;
+      word-spacing: 5px;
+      font-size: 20px;
+    }
+  }
+}
+
+.secondContainer{
+  height: 400px;
+  background-color: #674172;
+  .educationsContainer{
+    height: 100%;
+    width: 50%;
+    float: left;
+    h1{
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      text-align: right;
+    }
+    .eacheducation{
+      padding-left: 10px;
+      padding-right: 50px;
+      h3{
+        font-family: 'Comfortaa', cursive;
+        color: white
+      }
+      h4{
+        font-family: 'Comfortaa', cursive;
+        color: #AEA8D3;
+      }
+      hr{
+        border-color: #AEA8D3;
+      }
+    }
+  }
+  .preferenceContainer{
+    width: 50%;
+    float: right;
+    height: 400px;
+    h1{
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      text-align: right;
+      padding-right: 10px;
+    }
+    .eachPreferences{
+      padding-top: 0.5px;
+      padding-left: 20px;
+      hr{
+        border-color: #AEA8D3;
+      }
+      h4{
+        font-family: 'Comfortaa', cursive;
+        color: white;
+      }
+      li{
+        list-style: none;
+      }
+    }
   }
 }

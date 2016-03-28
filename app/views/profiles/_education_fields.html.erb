@@ -9,7 +9,7 @@
   <%= f.select :level, ['1st','2.1','2.2','3rd'] %><br>
 
   <%= f.label :finishdate %><br>
-  <%= f.date_select :finishdate, :order => [:year] %><br>
+  <%= f.date_select :finishdate, :order => [:day, :month, :year] %><br>
 
   <%= link_to_remove_association "remove education", f %>
 </div>

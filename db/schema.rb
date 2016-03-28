@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323135313) do
+ActiveRecord::Schema.define(version: 20160328120538) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20160323135313) do
     t.string   "experiance"
     t.string   "mostInterest"
     t.string   "cityToWorkIn"
-    t.string   "willingToRelocate"
-    t.string   "workAbroad"
+    t.boolean  "willingToRelocate"
+    t.boolean  "workAbroad"
     t.string   "salary"
     t.string   "UKauthorization"
     t.string   "TwitterLink"

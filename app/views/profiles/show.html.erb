@@ -32,25 +32,47 @@
 </div>
 
 <div class="summary">
-  <p class=""><i><%= @profile.bio %></i></p>
+  <h1>Summary</h1>
+  <hr>
+  <div class="summarybox">
+    <p class=""><i><%= @profile.bio %></i></p>
+  </div>
 </div>
 
 <div class="secondContainer">
   <div class="educationsContainer">
-    <% @profile.educations.each do |education| %>
-      <li>
-        <%= education.university %>
-        <%= education.course %>
-        <%= education.level %>
-        <%= education.finishdate %>
-      </li>
-    <% end %>
+    <h1>Education</h1>
+    <div class="eacheducation">
+      <% @profile.educations.each do |education| %>
+          <h3><b><%= education.university %> - <%= education.finishdate.year %></b></h3>
+          <h4><%= education.level %> in <%= education.course %></h4>
+          <hr>
+      <% end %>
+    </div>
   </div>
   <div class="preferenceContainer">
-    <%= @profile.all_skills %>
-    <%= @profile.experiance %>
-    <%= @profile.willingToRelocate %>
-    <%= @profile.workAbroad %>
+    <h1>Job Preferences</h1>
+    <div class="eachPreferences">
+      <% if @profile.willingToRelocate == true %>
+        <h4><%= @profile.name %> is willing to relocate</h4>
+      <% else %>
+        <h4><%= @profile.name %> is not willing to relocate</h4>
+      <% end %><hr>
+      <% if @profile.workAbroad == true %>
+        <h4><%= @profile.name %> is willing to work abroad</h4>
+      <% else %>
+        <h4><%= @profile.name %> is not willing to work abroad</h4>
+      <% end %><hr>
+      <h4>Expecting a salary of: £<%= @profile.salary %> </h4><hr>
+      <h4>Prefer to work in these locations:</h4>
+      <div class="eachcity">
+        <% @profile.cities.each do |city| %>
+          <li>
+            <h4><i class="fa fa-check"></i>&nbsp;<span><%= city.name %></span></h4>
+          </li>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -62,6 +84,8 @@
     </li>
   <% end %>
 </div>
+
+<%= @profile.experiance %><br>
 
 <div class="workContainer">
   <% @profile.works.each do |work| %>
@@ -85,52 +109,10 @@
   <%= @profile.phone %>
 </p>
 
-<h3 class="textfont"><%= @profile.location %></h3>
-
-<p>
-  <strong>salary:</strong>
-  <%= @profile.salary %>
-</p>
-
-
-<p>
-  <strong>TwitterLink:</strong>
-  <%= @profile.TwitterLink %>
-</p>
-
-<p>
-  <strong>GithubLink:</strong>
-  <%= @profile.GithubLink %>
-</p>
-
-<p>
-  <strong>StackLink:</strong>
-  <%= @profile.StackLink %>
-</p>
-
-<p>
-  <strong>DribbbleLink:</strong>
-  <%= @profile.DribbbleLink %>
-</p>
-
-<p>
-  <strong>MediumLink:</strong>
-  <%= @profile.MediumLink %>
-</p>
-
-
-
 <strong>Expertise</strong>
 <% @profile.expertises.each do |e| %>
   <li>
     <%= e.name %>
-  </li>
-<% end %>
-
-<strong>Cities you want to work</strong>
-<% @profile.cities.each do |city| %>
-  <li>
-    <%= city.name %>
   </li>
 <% end %>
 
