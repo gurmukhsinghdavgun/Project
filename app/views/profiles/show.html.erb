@@ -44,8 +44,8 @@
     <h1>Education</h1>
     <div class="eacheducation">
       <% @profile.educations.each do |education| %>
-          <h3><b><%= education.university %> - <%= education.finishdate.year %></b></h3>
-          <h4><%= education.level %> in <%= education.course %></h4>
+          <h3><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;<b><%= education.university %> - <%= education.finishdate.year %></b></h3>
+          <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= education.level %> in <%= education.course %></h4>
           <hr>
       <% end %>
     </div>
@@ -54,16 +54,16 @@
     <h1>Job Preferences</h1>
     <div class="eachPreferences">
       <% if @profile.willingToRelocate == true %>
-        <h4><%= @profile.name %> is willing to relocate</h4>
+        <h4><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<%= @profile.name %> is willing to relocate</h4>
       <% else %>
-        <h4><%= @profile.name %> is not willing to relocate</h4>
+        <h4><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<%= @profile.name %> is not willing to relocate</h4>
       <% end %><hr>
       <% if @profile.workAbroad == true %>
-        <h4><%= @profile.name %> is willing to work abroad</h4>
+        <h4><i class="fa fa-plane"></i>&nbsp;&nbsp;<%= @profile.name %> is willing to work abroad</h4>
       <% else %>
-        <h4><%= @profile.name %> is not willing to work abroad</h4>
+        <h4><i class="fa fa-plane"></i>&nbsp;&nbsp;<%= @profile.name %> is not willing to work abroad</h4>
       <% end %><hr>
-      <h4>Expecting a salary of: £<%= @profile.salary %> </h4><hr>
+      <h4><i class="fa fa-gbp"></i>&nbsp;&nbsp;Expecting a salary of: £<%= @profile.salary %> </h4><hr>
       <h4>Prefer to work in these locations:</h4>
       <div class="eachcity">
         <% @profile.cities.each do |city| %>
@@ -77,15 +77,16 @@
 </div>
 
 <div class="portfolioContainer">
+  <h1><b>My Portfolio</b></h1>
+  <hr>
   <div class="eachportfolio">
     <% @profile.portfolios.each do |portfolio| %>
       <article class="caption">
-        <%= image_tag portfolio.picture.url(:medium), class: "caption__media" %>
+        <%= image_tag portfolio.picture.url,:size => "300x300", class: "caption__media img" %>
           <div class="caption__overlay">
-            <h1 class="caption__overlay__title">Add Title</h1>
-              <p class="caption__overlay__content">
-                <%= portfolio.description %>
-              </p>
+            <p class="caption__overlay__content">
+              <%= portfolio.description %>
+            </p>
           </div>
       </article>
     <% end %>
@@ -93,16 +94,19 @@
 </div>
 
 <div class="workContainer">
-  <%= @profile.experiance %><br>
-  <% @profile.works.each do |work| %>
-    <li>
-      <%= work.companyName %>
-      <%= work.position %>
-      <%= work.startDate %>
-      <%= work.finishDate %>
-      <%= work.workDescription %>
-    </li>
-  <% end %>
+  <h1><b>Work Experience</b></h1>
+  <div class="eachworks">
+    <%= @profile.experiance %><br>
+    <% @profile.works.each do |work| %>
+      <li>
+        <%= work.companyName %>
+        <%= work.position %>
+        <%= work.startDate %>
+        <%= work.finishDate %>
+        <%= work.workDescription %>
+      </li>
+    <% end %>
+  </div>
 </div>
 
 <% if !@joined %>

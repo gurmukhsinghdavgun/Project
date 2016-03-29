@@ -14,7 +14,7 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :portfolios
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :image, styles: { medium: "300x500>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def all_skills=(names)
