@@ -22,6 +22,10 @@ class ProfilesController < ApplicationController
       client = Octokit::Client.new(:access_token => @profile.user.github_profile.access_token)
       @repositories = client.repos
     end
+    @joined = false
+    if !current_recruiter.nil? && !current_recruiter.profiles.nil?
+      @joined = current_recruiter.profiles.include?(@profile)
+    end
   end
 
   def new

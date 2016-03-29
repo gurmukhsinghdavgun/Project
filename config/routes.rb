@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'developer/home'
   get 'home/index'
   get 'skills/:skill', to: 'profiles#index', as: "skill"
+  post '/pay' => 'charge#pay'
   resources :profiles
   resources :favorite_profiles, only: [:create, :destroy]
 

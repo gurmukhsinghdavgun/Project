@@ -6,4 +6,8 @@ class Recruiter < ActiveRecord::Base
 
   has_many :favorites
   has_many :favorite_profiles, through: :favorites, source: :favorited, source_type: 'Profile'
+
+  has_many :devpurchaseds
+  has_many :profiles, through: :devpurchaseds
+
 end

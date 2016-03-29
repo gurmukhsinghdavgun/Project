@@ -77,17 +77,23 @@
 </div>
 
 <div class="portfolioContainer">
-  <% @profile.portfolios.each do |portfolio| %>
-    <li>
-      <%= image_tag portfolio.picture.url(:medium) %>
-      <%= portfolio.description %>
-    </li>
-  <% end %>
+  <div class="eachportfolio">
+    <% @profile.portfolios.each do |portfolio| %>
+      <article class="caption">
+        <%= image_tag portfolio.picture.url(:medium), class: "caption__media" %>
+          <div class="caption__overlay">
+            <h1 class="caption__overlay__title">Add Title</h1>
+              <p class="caption__overlay__content">
+                <%= portfolio.description %>
+              </p>
+          </div>
+      </article>
+    <% end %>
+  </div>
 </div>
 
-<%= @profile.experiance %><br>
-
 <div class="workContainer">
+  <%= @profile.experiance %><br>
   <% @profile.works.each do |work| %>
     <li>
       <%= work.companyName %>
@@ -99,15 +105,43 @@
   <% end %>
 </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user.email %>
-</p>
-
-<p>
-  <strong>phone:</strong>
-  <%= @profile.phone %>
-</p>
+<% if !@joined %>
+  <h4>contact details hidden please purchase</h4>
+  <%= form_tag pay_path, id:"chargeForm" do %>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <%= hidden_field_tag 'stripeToken' %>
+    <%= hidden_field_tag 'stripeEmail' %>
+    <%= hidden_field_tag 'profile_id', @profile.id %>
+    <button id="customButton">Purchase</button>
+    <script>
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_o9FMz5iI1OrU4H0mNewJrF5P',
+      image: '/img/documentation/checkout/marketplace.png',
+      locale: 'auto',
+      token: function(token, arg) {
+        $('#stripeToken').val(token.id);
+        $('#stripeEmail').val(token.email);
+        $('#chargeForm').submit();
+      }
+    });
+    $('#customButton').on('click', function(e) {
+      // Open Checkout with further options
+      handler.open({
+        name: 'Ulearnr',
+        description: '2 widgets',
+        currency: "gbp",
+        amount: '<%= @amount %>'
+      });
+      e.preventDefault();
+    });
+    </script>
+  <% end %>
+<% else %>
+  <div class="contactContainer">
+    <%= @profile.user.email %>
+    <%= @profile.phone %>
+  </div>
+<% end %>
 
 <strong>Expertise</strong>
 <% @profile.expertises.each do |e| %>
@@ -144,3 +178,31 @@
     <%= link_to 'Remove from favorites', favorite_profile_path(@profile), method: :delete %>
   <%- end -%>
 <% end %>
+
+<script type="text/javascript">
+$('.cd-trigger').on('click', function(event){
+
+$('.cd-quick-view').css({
+    "top": topSelected, // this is the selected image top value
+    "left": leftSelected, // this is the selected image left value
+    "width": widthSelected, // this is the selected image width
+}).velocity({
+  //animate the quick view: animate its width and center it in the viewport
+  //during this animation, only the slider image is visible
+    'width': sliderFinalWidth+'px',
+    'left': finalLeft+'px', // ($(window).width - sliderFinalWidth)/2,
+    'top': finalTop+ 'px', // ($(window).height - slider final height)/2,
+}, 1000, [ 400, 20 ])
+.velocity({
+  'width': quickViewWidth+'px', // 80% of the viewport
+  'left': quickViewLeft+'px', // 10% of the viewport
+}, 300, 'ease' ,function(){
+  //show quick view content
+  $('.cd-quick-view').addClass('add-content');
+}).addClass('is-visible');
+
+//assign .overlay-layer class to the body, assign the .empty-box class to the selected .cd-item
+//...
+
+});
+</script>
