@@ -486,7 +486,7 @@
   }
 
   .eachportfolio{
-    margin-left: 90px;
+    margin-left: 93px;
     margin-top: 20px;
     margin-bottom: 50px;
     .container {
@@ -573,8 +573,91 @@
     color: white;
     text-align: right;
   }
+  h4{
+    padding-right: 20px;
+    font-family: 'Comfortaa', cursive;
+    color: #AEA8D3;
+    text-align: right;
+  }
 
   .eachworks{
+    padding-left: 10px;
+    width: 50%;
+    h3{
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      .date{
+        color: #AEA8D3;
+        font-size: 15px;
+        text-align: right;
+      }
+    }
 
+    h4{
+      font-family: 'Comfortaa', cursive;
+      color: #AEA8D3;
+      text-align: left;
+    }
+
+    p{
+      color: white;
+      font-family: 'Comfortaa', cursive;
+    }
+  }
+}
+
+.contactContainer{
+  clear: both;
+    padding-top: 30px;
+    text-align: center;
+    padding-bottom: 30px;
+    .custom{
+      width: 160px;
+      border-radius: 0;
+      font-family: 'Comfortaa', cursive;
+      color: white;
+      background-color: #674172;
+      outline-color: #674172;
+    }
+    h4{
+      font-family: 'Comfortaa', cursive;
+    }
+    p{
+      font-family: 'Comfortaa', cursive;
+    }
+}
+
+.githubContainer{
+  clear: both;
+  h1{
+    font-family: 'Comfortaa', cursive;
+    color: #674172;
+    text-align: center;
+  }
+  .publicrepos{
+    margin-top: 20px;
+    .repo{
+      height: 200px;
+      width: 300px;
+      float: left;
+      margin-left: 30px;
+      margin-bottom: 20px;
+      h4{
+        font-family: 'Comfortaa', cursive;
+        color: #674172;
+      }
+      h5{
+        color: #674172;
+      }
+      hr {
+        margin-top: 0.5px;
+        margin-bottom: 2px;
+        border-color: #674172;
+      }
+      p{
+        font-family: 'Comfortaa', cursive;
+        color: #674172;
+      }
+    }
   }
 }

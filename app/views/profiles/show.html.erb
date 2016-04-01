@@ -7,7 +7,7 @@
     <br>
     <h4 class="textfont"><%= "Score: #{@profile.score}" %></h4>
     <h1 class="textfont"><%= @profile.name %></h1><hr>
-    <h2 class="textfont">Ruby on Rails Developer</h2>
+    <h2 class="textfont"><%= @profile.whatAmI %></h2>
     <h4 class="textfont"><%= @profile.all_skills %></h4><hr>
   </div>
   <div class="sociallinks">
@@ -95,93 +95,112 @@
 
 <div class="workContainer">
   <h1><b>Work Experience</b></h1>
+  <h4><%= @profile.name %> has <%= @profile.experiance %> experience</h4>
   <div class="eachworks">
-    <%= @profile.experiance %><br>
     <% @profile.works.each do |work| %>
-      <li>
-        <%= work.companyName %>
-        <%= work.position %>
-        <%= work.startDate %>
-        <%= work.finishDate %>
-        <%= work.workDescription %>
-      </li>
+      <h3><i class="fa fa-briefcase">&nbsp;&nbsp;</i><b><%= work.companyName %></b>
+        <span class="date">&nbsp;&nbsp;<%= work.startDate.month %>/<%= work.startDate.year %> - <%= work.finishDate.month %>/<%= work.finishDate.year %></span></h3>
+      <h4><b><%= work.position %></b></h4>
+      <p><%= work.workDescription %></p>
+      <hr>
     <% end %>
   </div>
 </div>
 
-<% if !@joined %>
-  <h4>contact details hidden please purchase</h4>
-  <%= form_tag pay_path, id:"chargeForm" do %>
-    <script src="https://checkout.stripe.com/checkout.js"></script>
-    <%= hidden_field_tag 'stripeToken' %>
-    <%= hidden_field_tag 'stripeEmail' %>
-    <%= hidden_field_tag 'profile_id', @profile.id %>
-    <button id="customButton">Purchase</button>
-    <script>
-    var handler = StripeCheckout.configure({
-      key: 'pk_test_o9FMz5iI1OrU4H0mNewJrF5P',
-      image: '/img/documentation/checkout/marketplace.png',
-      locale: 'auto',
-      token: function(token, arg) {
-        $('#stripeToken').val(token.id);
-        $('#stripeEmail').val(token.email);
-        $('#chargeForm').submit();
-      }
-    });
-    $('#customButton').on('click', function(e) {
-      // Open Checkout with further options
-      handler.open({
-        name: 'Ulearnr',
-        description: '2 widgets',
-        currency: "gbp",
-        amount: '<%= @amount %>'
-      });
-      e.preventDefault();
-    });
-    </script>
-  <% end %>
-<% else %>
-  <div class="contactContainer">
-    <%= @profile.user.email %>
-    <%= @profile.phone %>
-  </div>
-<% end %>
-
-<strong>Expertise</strong>
-<% @profile.expertises.each do |e| %>
-  <li>
-    <%= e.name %>
-  </li>
-<% end %>
-
 <% unless @profile.user.github_profile.nil? %>
-<div>
-    <h4>From: <%= @profile.user.github_profile.location %></h4>
-    <h4>Public Repos: <%= @profile.user.github_profile.public_repo %></h4>
-    <h4>Public Gists: <%= @profile.user.github_profile.public_gists %></h4>
-    <h4>Followers: <%= @profile.user.github_profile.followers %></h4>
-    <h4>Following: <%= @profile.user.github_profile.following %></h4>
-    <h4>Member Since: <%= Date.parse @profile.user.github_profile.member_since %></h4>
+  <div class="githubContainer">
+    <h1><span class="icon"><i class="fa fa-github fa-1x"></i></span>&nbsp;<b>Github Profile</b></h1>
+    <div class="publicrepos">
+      <% @repositories.each do |repo| %>
+        <%= link_to repo[:html_url] do %>
+          <div class="repo">
+            <b><h4><%= h truncate(repo[:name].upcase, :length => 20) %></h4></b>
+            <h5><i class="fa fa-code-fork"></i> <%= repo[:forks]%>&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i> <%= repo[:watchers] %> <span style="float:right; color:#AEA8D3;"><%= repo[:language] %> </span></h5>
+            <hr>
+            <p><%= h truncate(repo[:description], :length => 200) %><span style="float:right; color:#AEA8D3;">View source code</span></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+<% end %>
 
-  <h1>Public Repositories</h1>
-
-  <ul>
-    <% @repositories.each do |repo| %>
-      <li>
-        <p><b><%= repo[:name].capitalize %></b>: <i><%= repo[:description].capitalize %></i> <b>[Watchers: <%= repo[:watchers] %>, Forks: <%= repo[:forks]%>, Stargazers: <%= repo[:stargazers_count] %>]</b></p>
-      </li>
+<div class="contactContainer">
+  <% if recruiter_signed_in? %>
+    <% if !@joined %>
+      <h4>You can contact your relevant candidates for just £1 per contact.<br> There are no subscriptions or up-front fees.</h4>
+      <%= form_tag pay_path, id:"chargeForm" do %>
+        <script src="https://checkout.stripe.com/checkout.js"></script>
+        <%= hidden_field_tag 'stripeToken' %>
+        <%= hidden_field_tag 'stripeEmail' %>
+        <%= hidden_field_tag 'profile_id', @profile.id %>
+        <button id="customButton" class="btn btn-primary btn-lg btn-border custom">Purchase £1</button>
+        <script>
+        var handler = StripeCheckout.configure({
+          key: 'pk_test_o9FMz5iI1OrU4H0mNewJrF5P',
+          image: '/img/documentation/checkout/marketplace.png',
+          locale: 'auto',
+          token: function(token, arg) {
+            $('#stripeToken').val(token.id);
+            $('#stripeEmail').val(token.email);
+            $('#chargeForm').submit();
+          }
+        });
+        $('#customButton').on('click', function(e) {
+          // Open Checkout with further options
+          handler.open({
+            name: 'Ulearnr',
+            description: '2 widgets',
+            currency: "gbp",
+            amount: '<%= @amount %>'
+          });
+          e.preventDefault();
+        });
+        </script>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-primary btn-lg btn-border custom" data-toggle="modal" data-target="#myModal">
+      View Contacts
+      </button>
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><%= @profile.name %> Contacts</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Get in touch with <%= @profile.name %> using the following methods:
+            </p><br>
+            <div class="">
+              <p>
+                Email: <span class="dets"><b><%= @profile.user.email %></b><br></span>
+                Contact number: <b><%= @profile.phone %></b>
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </div>
     <% end %>
-  </ul>
-<% end %>
+  <% end %>
+  <br>
+  <% if recruiter_signed_in? %>
+    <%- unless current_recruiter.favorite_profiles.exists?(id: @profile.id) -%>
+      <%= link_to 'Add to favorites', favorite_profiles_path(profile_id: @profile), method: :post %>
+    <%- else -%>
+      <%= link_to 'Remove from favorites', favorite_profile_path(@profile), method: :delete %>
+    <%- end -%>
+  <% end %>
 
-<% if recruiter_signed_in? %>
-  <%- unless current_recruiter.favorite_profiles.exists?(id: @profile.id) -%>
-    <%= link_to 'Add to favorites', favorite_profiles_path(profile_id: @profile), method: :post %>
-  <%- else -%>
-    <%= link_to 'Remove from favorites', favorite_profile_path(@profile), method: :delete %>
-  <%- end -%>
-<% end %>
+</div>
+
+
+
 
 <script type="text/javascript">
 $('.cd-trigger').on('click', function(event){

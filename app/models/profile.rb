@@ -86,7 +86,12 @@ class Profile < ActiveRecord::Base
      score += 3
    end
 
-
+   if self.willingToRelocate = true
+     score += 5
+   elsif self.willingToRelocate = false
+     score -= 5
+   end
 
   end
+
 end

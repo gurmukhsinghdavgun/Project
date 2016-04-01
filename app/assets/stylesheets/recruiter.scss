@@ -1,3 +1,127 @@
 // Place all the styles related to the recruiter controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.profilescontainer{
+  flex-grow: 1;
+  -webkit-flex: 1;
+  flex:1;
+  position:relative;
+
+  .eachprofile{
+    float: left;
+    padding-left: 10px;
+    margin-top: 100px;
+
+    img{
+      max-width:100%;
+    }
+    .profile-card{
+      position:relative;
+      width:250px;
+      height: 300px;
+      padding:40px 30px 10px;
+      background:#674172;
+      text-align:center;
+      border-radius:4px;
+      transition: all 200ms ease;
+    }
+
+    .profile-card:hover{
+      box-shadow: 0px 30px 60px -5px rgba(55,55,71,0.3);
+      transform: translate3d(0,-5px,0);
+      .mask-shadow{
+        opacity:1;
+        box-shadow: 0px 30px 60px -5px rgba(55,55,71,0.3);
+        position:absolute;
+      }
+    }
+    .profile-card header{
+      display:block;
+      margin-bottom:10px;
+    }
+    .profile-card header a{
+      width:150px;
+      height:150px;
+      display:block;
+      border-radius:100%;
+      margin:-120px auto 0;
+      box-shadow: 0 0 0 5px white;
+    }
+    .profile-card header a img{
+      border-radius: 50%;
+      width:150px;
+      height:150px;
+    }
+
+    .profile-card:hover header a, .profile-card header a:hover{
+      animation: bounceOut .4s linear;
+      -webkit-animation: bounceOut .4s linear;
+    }
+    .profile-card header h1{
+      font-size:20px;
+      color:white;
+      text-transform:uppercase;
+      margin-bottom:5px;
+    }
+    .profile-card header h2{
+      font-size:14px;
+      margin-top: 10px;
+      color:white;
+      text-transform:uppercase;
+      margin:0;
+    }
+    /*content*/
+    .profile-bio{
+      font-size:14px;
+      color:#a5a5a5;
+      line-height:1.7;
+      font-style: italic;
+      margin-bottom:30px;
+    }
+    /*animation hover effect*/
+    @-webkit-keyframes bounceOut {
+      0% {
+        box-shadow: 0 0 0 4px #82b541;
+        opacity: 1;
+      }
+      25% {
+        box-shadow: 0 0 0 1px #82b541;
+        opacity: 1;
+      }
+      50% {
+        box-shadow: 0 0 0 7px #82b541;
+        opacity: 1;
+      }
+      75% {
+        box-shadow: 0 0 0 4px #82b541;
+        opacity: 1;
+      }
+      100% {
+        box-shadow: 0 0 0 5px #82b541;
+        opacity: 1;
+      }
+    }
+    @keyframes bounceOut {
+      0% {
+        box-shadow: 0 0 0 6px #82b541;
+        opacity: 1;
+      }
+      25% {
+        box-shadow: 0 0 0 2px #82b541;
+        opacity: 1;
+      }
+      50% {
+        box-shadow: 0 0 0 9px #82b541;
+        opacity: 1;
+      }
+      75% {
+        box-shadow: 0 0 0 3px #82b541;
+        opacity: 1;
+      }
+      100% {
+        box-shadow: 0 0 0 5px #82b541;
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,5 +1,19 @@
-<% @favorites.each do |favorite| %>
-  <li>
-    <%= favorite.bio %>
-  </li>
-<% end %>
+
+<div class="profilescontainer" data-no-turbolink="true">
+  <% @favorites.each do |favorite| %>
+    <div class="eachprofile">
+      <aside class="profile-card">
+        <header>
+          <%= link_to favorite do %>
+            <%= image_tag favorite.image.url(:medium) %>
+          <% end %>
+          <h1><%= favorite.name %></h1>
+          <h2>WEB DESIGNER</h2>
+        </header>
+        <div class="profile-bio">
+          <p>"<%= favorite.shortbio %>"</p>
+        </div>
+      </aside>
+    </div>
+  <% end %>
+</div>

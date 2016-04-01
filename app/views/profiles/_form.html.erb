@@ -55,7 +55,6 @@
           </div>
         </div>
       </div>
-
       <div class="skills">
         <h2>Skills</h2>
         <h4>let employers know how good you are</h4>
@@ -63,28 +62,32 @@
         <div class="customgap">
           <div class="field">
             <label for="all_skills">Enter you skills</label>
-            <%= f.text_field :all_skills, :class => "form-control", placeholder: "seperate skills with a comma => Ruby,Java,Scala,iOS" %>
+            <%= f.text_field :all_skills, :class => "form-control", placeholder: "seperate skills with a dash => Ruby-Java-Scala-iOS" %>
           </div>
+          <div class="form-group">
+            <label for="name">What type of developer are you?</label>
+            <%= f.text_field :whatAmI, :class => "form-control", :placeholder => "Java Developer or Full Webstack Developer"%>
+          </div><br>
           <br>
           <label for="experiance">Years of experiance developing</label><br>
           <div class="experianceContainer">
             <label class="radioholder">
-              <%= f.radio_button :experiance, '1-2 Years', :type => "checkbox" %> 1-2 Years
+              <%= f.radio_button :experiance, '1-2 years', :type => "checkbox" %> 1-2 Years
             </label>
             <label class="radioholder">
-              <%= f.radio_button :experiance, '2-3 Years', :type => "checkbox" %> 2-3 Years
+              <%= f.radio_button :experiance, '2-3 years', :type => "checkbox" %> 2-3 Years
             </label>
             <label class="radioholder">
-              <%= f.radio_button :experiance, '3-4 Years', :type => "checkbox" %> 3-4 Years
+              <%= f.radio_button :experiance, '3-4 years', :type => "checkbox" %> 3-4 Years
             </label>
             <label class="radioholder">
-              <%= f.radio_button :experiance, '5-6 Years', :type => "checkbox" %> 5-6 Years
+              <%= f.radio_button :experiance, '5-6 years', :type => "checkbox" %> 5-6 Years
             </label>
             <label class="radioholder">
-              <%= f.radio_button :experiance, '6-7 Years', :type => "checkbox" %> 6+ Years
+              <%= f.radio_button :experiance, '6-7 years', :type => "checkbox" %> 6-7 Years
             </label>
             <label class="radioholder">
-              <%= f.radio_button :experiance, '7+ Years', :type => "checkbox" %> 6+ Years
+              <%= f.radio_button :experiance, '7+ years', :type => "checkbox" %> 7+ Years
             </label>
           </div><br>
 
