@@ -86,12 +86,43 @@ class Profile < ActiveRecord::Base
      score += 3
    end
 
-   if self.willingToRelocate = true
+   if self.willingToRelocate == true
      score += 5
-   elsif self.willingToRelocate = false
-     score -= 5
    end
 
+   if self.workAbroad == true
+     score += 5
+   end
+
+   if self.portfolios.present?
+     score += 5 * self.portfolios.count
+   end
+
+   if self.works.present?
+     score += 5 * self.works.count
+   end
+
+   if self.educations.present?
+     score += 5 * self.educations.count
+   end
+
+   case self.experiance
+   when "1-2 years"
+     score += 5
+   when "2-3 years"
+     score += 10
+   when "3-4 years"
+     score += 15
+   when "5-6 years"
+     score += 20
+   when "6-7 years"
+     score += 25
+   when "7+ years"
+     score += 30
+   end
+
+
+   score
   end
 
 end
