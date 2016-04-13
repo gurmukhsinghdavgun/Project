@@ -81,5 +81,6 @@ class ProfilesController < ApplicationController
         portfolios_attributes: [:id, :description, :picture, :_destroy],
         works_attributes: [:id, :companyName, :position, :startDate, :finishDate, :workDescription, :_destroy],
         expertise_ids:[], city_ids:[] )
+        #need to add images _destroy
     end
 end

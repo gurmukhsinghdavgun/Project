@@ -12,7 +12,7 @@ class Profile < ActiveRecord::Base
 
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :educations, reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :portfolios
+  accepts_nested_attributes_for :portfolios, :allow_destroy => true
 
   has_attached_file :image, styles: { medium: "300x500>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
@@ -104,23 +104,32 @@ class Profile < ActiveRecord::Base
 
    if self.educations.present?
      score += 5 * self.educations.count
+     case self.educations.first.level
+       when "1st"
+        score += 15
+       when "2.1"
+        score += 10
+       when "2.2"
+        score += 5
+       when "3rd"
+        score += 1
+      end
    end
 
    case self.experiance
-   when "1-2 years"
-     score += 5
-   when "2-3 years"
-     score += 10
-   when "3-4 years"
-     score += 15
-   when "5-6 years"
-     score += 20
-   when "6-7 years"
-     score += 25
-   when "7+ years"
-     score += 30
+     when "1-2 years"
+       score += 5
+     when "2-3 years"
+       score += 10
+     when "3-4 years"
+       score += 15
+     when "5-6 years"
+       score += 20
+     when "6-7 years"
+       score += 25
+     when "7+ years"
+       score += 30
    end
-
 
    score
   end
