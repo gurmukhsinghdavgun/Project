@@ -104,16 +104,26 @@ class Profile < ActiveRecord::Base
 
    if self.educations.present?
      score += 5 * self.educations.count
-     case self.educations.first.level
-       when "1st"
-        score += 15
-       when "2.1"
-        score += 10
-       when "2.2"
-        score += 5
-       when "3rd"
-        score += 1
-      end
+     self.educations.each do |e|
+       case e.level
+         when "1st"
+          score += 15
+         when "2.1"
+          score += 10
+         when "2.2"
+          score += 5
+         when "3rd"
+          score += 1
+        end
+        case e.degreetype
+          when "Bachelor Degree"
+            score += 5
+          when "Masters Degree"
+            score += 10
+          when "PhD"
+            score += 20
+        end
+     end
    end
 
    case self.experiance

@@ -45,7 +45,7 @@
     <div class="eacheducation">
       <% @profile.educations.each do |education| %>
           <h3><i class="fa fa-graduation-cap"></i>&nbsp;&nbsp;<b><%= education.university %> - <%= education.finishdate.year %></b></h3>
-          <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= education.level %> in <%= education.course %></h4>
+          <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= education.level %> in <%= education.course %> <%= education.degreetype %></h4>
           <hr>
       <% end %>
     </div>

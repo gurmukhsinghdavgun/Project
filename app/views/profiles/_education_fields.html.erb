@@ -2,6 +2,11 @@
   <%= f.label :university %><br>
   <%= f.text_field :university %><br>
 
+  <div class="field">
+    <label for="willingToRelocate">Are you willing to relocate?</label>
+    <%= f.select :degreetype, ['Bachelor Degree', 'Masters Degree', 'PhD'], {}, :class => 'form-control' %>
+  </div>
+
   <%= f.label :course %><br>
   <%= f.text_field :course %><br>
 
