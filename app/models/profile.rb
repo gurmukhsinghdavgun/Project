@@ -98,8 +98,22 @@ class Profile < ActiveRecord::Base
      score += 5 * self.portfolios.count
    end
 
+   #look into date statement
    if self.works.present?
      score += 5 * self.works.count
+     self.works.each do |work|
+       if (work.finishDate.year - work.startDate.year).to_i <= 1
+         score += 2
+       elsif (work.finishDate.year - work.startDate.year).to_i >= 2 && (work.finishDate.year - work.startDate.year).to_i <= 3
+         score += 3
+       elsif (work.finishDate.year - work.startDate.year).to_i >= 4 && (work.finishDate.year - work.startDate.year).to_i <= 5
+         score += 4
+       elsif (work.finishDate.year - work.startDate.year).to_i >= 5 && (work.finishDate.year - work.startDate.year).to_i <= 6
+         score += 5
+       elsif (work.finishDate.year - work.startDate.year).to_i > 7
+         score += 10
+       end
+     end
    end
 
    if self.educations.present?
