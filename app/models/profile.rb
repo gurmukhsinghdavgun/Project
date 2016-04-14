@@ -98,7 +98,6 @@ class Profile < ActiveRecord::Base
      score += 5 * self.portfolios.count
    end
 
-   #look into date statement
    if self.works.present?
      score += 5 * self.works.count
      self.works.each do |work|
@@ -112,6 +111,23 @@ class Profile < ActiveRecord::Base
          score += 5
        elsif (work.finishDate.year - work.startDate.year).to_i > 7
          score += 10
+       end
+
+       workrole = work.position.downcase
+       if workrole.include? "internship"
+         score += 5
+       elsif workrole.include? "senior"
+         score += 10
+       elsif workrole.include? "graduate"
+         score += 15
+       elsif workrole.include? "architect"
+         score += 20
+       elsif workrole.include? "engineer"
+         score += 20
+       elsif workrole.include? "manager"
+         score += 20
+       elsif workrole.include? "scientist"
+         score += 20
        end
      end
    end
