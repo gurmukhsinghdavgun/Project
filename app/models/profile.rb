@@ -57,11 +57,9 @@ class Profile < ActiveRecord::Base
    if self.image.present?
      score += 5
    end
-
    if self.location.present?
      score += 2
    end
-
    if self.phone.present?
      score += 2
    end
@@ -69,19 +67,15 @@ class Profile < ActiveRecord::Base
    if self.TwitterLink.present?
      score += 1
    end
-
    if self.GithubLink.present?
      score += 2
    end
-
    if self.StackLink.present?
      score += 2
    end
-
    if self.DribbbleLink.present?
      score += 3
    end
-
    if self.MediumLink.present?
      score += 3
    end
@@ -89,7 +83,6 @@ class Profile < ActiveRecord::Base
    if self.willingToRelocate == true
      score += 5
    end
-
    if self.workAbroad == true
      score += 5
    end
@@ -169,6 +162,28 @@ class Profile < ActiveRecord::Base
        score += 25
      when "7+ years"
        score += 30
+   end
+
+   if self.skills.present?
+    score += 2 * skills.count
+    self.skills.each do |skill|
+      case skill.name.downcase
+      when "ruby"
+        score += 2
+      when "objective-c"
+        score += 2
+      when "java"
+        score += 2
+      when "c++"
+        score += 2
+      when "python"
+        score += 2
+      when "javascript"
+        score += 2
+      when "php"
+        score += 2
+      end
+    end
    end
 
    score
