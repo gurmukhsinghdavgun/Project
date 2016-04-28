@@ -1,4 +1,6 @@
 class Profile < ActiveRecord::Base
+  cattr_accessor :crepos
+
   belongs_to :user
   has_many :skillsets
   has_many :skills, through: :skillsets
@@ -146,6 +148,46 @@ class Profile < ActiveRecord::Base
           when "PhD"
             score += 20
         end
+     end
+   end
+
+   if self.user.github_profile.present?
+     score += 50
+     if user.github_profile.followers > 3
+       score += 1000
+     end
+     if user.github_profile.following > 1
+       score += 1000
+     end
+     #no need to use count because public_repo is a number
+     score += 5 * user.github_profile.public_repo
+
+     Profile.crepos.each do |repo|
+       if repo.watchers > 100
+         score += 1000
+       end
+       if repo.forks > 100
+         score += 1000
+       end
+       case repo.language.to_s.downcase
+       when "ruby"
+         score += 2
+       when "objective-c"
+         score += 2
+       when "java"
+         score += 2
+       when "c++"
+         score += 2
+       when "python"
+         score += 2
+       when "javascript"
+         score += 2
+       when "php"
+         score += 2
+       end
+       if repo.stargazers_count > 1
+         score += 10
+       end
      end
    end
 

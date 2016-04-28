@@ -109,13 +109,19 @@
 
 <% unless @profile.user.github_profile.nil? %>
   <div class="githubContainer">
+    <h4>From: <%= current_user.github_profile.location %></h4>
+    <h4>Public Repos: <%= current_user.github_profile.public_repo %></h4>
+    <h4>Public Gists: <%= current_user.github_profile.public_gists %></h4>
+    <h4>Followers: <%= current_user.github_profile.followers %></h4>
+    <h4>Following: <%= current_user.github_profile.following %></h4>
     <h1><span class="icon"><i class="fa fa-github fa-1x"></i></span>&nbsp;<b>Github Profile</b></h1>
     <div class="publicrepos">
       <% @repositories.each do |repo| %>
         <%= link_to repo[:html_url] do %>
           <div class="repo">
             <b><h4><%= h truncate(repo[:name].upcase, :length => 20) %></h4></b>
-            <h5><i class="fa fa-code-fork"></i> <%= repo[:forks]%>&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i> <%= repo[:watchers] %> <span style="float:right; color:#AEA8D3;"><%= repo[:language] %> </span></h5>
+            <h4>contributions: <%= repo[:contributions] %></h4>
+            <h5><i class="fa fa-code-fork"></i> <%= repo[:forks]%>&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i> <%= repo[:watchers] %> <span style="float:right; color:#AEA8D3;"><%= repo[:language] %> </span> </h5>
             <hr>
             <p><%= h truncate(repo[:description], :length => 200) %><span style="float:right; color:#AEA8D3;">View source code</span></p>
           </div>

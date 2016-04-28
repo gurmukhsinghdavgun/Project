@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
     impressionist(@profile)
     unless @profile.user.github_profile.nil?
       client = Octokit::Client.new(:access_token => @profile.user.github_profile.access_token)
-      @repositories = client.repos
+      Profile.crepos = @repositories = client.repos
     end
     @joined = false
     if !current_recruiter.nil? && !current_recruiter.profiles.nil?
