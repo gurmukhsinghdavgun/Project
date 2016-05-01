@@ -19,6 +19,10 @@ class Profile < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x500>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  def words
+    scan(/\w[\w\'\-]*/)
+  end
+
   def all_skills=(names)
     self.skills = names.split("-").map do |name|
       Skill.where(name: name.strip).first_or_create!
@@ -124,6 +128,13 @@ class Profile < ActiveRecord::Base
        elsif workrole.include? "scientist"
          score += 20
        end
+
+       splitDescription = work.workDescription.split(' ')
+       keywords = Array['team','developed','created']
+       if splitDescription.include? keywords.each
+         score += 3000
+       end
+
      end
    end
 
@@ -154,9 +165,6 @@ class Profile < ActiveRecord::Base
    if self.user.github_profile.present?
      score += 50
      if user.github_profile.followers > 3
-       score += 1000
-     end
-     if user.github_profile.following > 1
        score += 1000
      end
      #no need to use count because public_repo is a number
