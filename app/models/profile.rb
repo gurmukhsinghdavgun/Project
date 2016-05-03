@@ -37,9 +37,9 @@ class Profile < ActiveRecord::Base
     Skill.find_by_name!(name).profiles
   end
 
-  def shortbio
-    bio.length > 100? bio[0..100] + "..." : bio
-  end
+  #def shortbio
+  #  bio.length > 100? bio[0..100] + "..." : bio
+  #end
 
   is_impressionable
 
@@ -129,10 +129,10 @@ class Profile < ActiveRecord::Base
          score += 20
        end
 
-       splitDescription = work.workDescription.split(' ')
-       keywords = Array['team','developed','created']
-       if splitDescription.include? keywords.each
-         score += 3000
+       splitDescription = work.workDescription.downcase.split(' ')
+       keywords = ['teamwork', 'developed', 'enchanced', 'transformed', 'achieved','grew', 'introduced', 'project', 'awarded']
+       splitDescription.select {|word| keywords.include?(word)}.each do |word|
+         score += 2
        end
 
      end
