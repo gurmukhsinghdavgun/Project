@@ -113,7 +113,7 @@ class Profile < ActiveRecord::Base
        end
 
        workrole = work.position.downcase
-       if workrole.include? "internship"
+       if workrole.include? "internship" || workrole.include? "intern"
          score += 5
        elsif workrole.include? "senior"
          score += 10
@@ -130,7 +130,7 @@ class Profile < ActiveRecord::Base
        end
 
        splitDescription = work.workDescription.downcase.split(' ')
-       keywords = ['teamwork', 'developed', 'enchanced', 'transformed', 'achieved','grew', 'introduced', 'project', 'awarded']
+       keywords = ['teamwork', 'developed', 'enhanced', 'transformed', 'achieved','grew', 'introduced', 'project', 'awarded']
        splitDescription.select {|word| keywords.include?(word)}.each do |word|
          score += 2
        end

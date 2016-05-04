@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413113541) do
+ActiveRecord::Schema.define(version: 20160503105927) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -128,16 +128,16 @@ ActiveRecord::Schema.define(version: 20160413113541) do
   create_table "profiles", force: :cascade do |t|
     t.string   "bio"
     t.integer  "user_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "name"
     t.string   "location"
     t.string   "phone"
     t.string   "experiance"
     t.string   "mostInterest"
     t.string   "cityToWorkIn"
-    t.boolean  "willingToRelocate"
-    t.boolean  "workAbroad"
+    t.boolean  "willingToRelocate",   default: false
+    t.boolean  "workAbroad",          default: false
     t.string   "salary"
     t.string   "UKauthorization"
     t.string   "TwitterLink"
