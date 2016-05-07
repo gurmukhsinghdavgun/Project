@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  require 'csv'
   cattr_accessor :crepos
 
   belongs_to :user
@@ -113,7 +114,7 @@ class Profile < ActiveRecord::Base
        end
 
        workrole = work.position.downcase
-       if workrole.include? "internship" || workrole.include? "intern"
+       if workrole.include? "internship"
          score += 5
        elsif workrole.include? "senior"
          score += 10
@@ -133,6 +134,19 @@ class Profile < ActiveRecord::Base
        keywords = ['teamwork', 'developed', 'enhanced', 'transformed', 'achieved','grew', 'introduced', 'project', 'awarded']
        splitDescription.select {|word| keywords.include?(word)}.each do |word|
          score += 2
+       end
+
+       workname = work.companyName
+       topcompanies = CSV.read('lib/assets/topcampanies.csv',{encoding: "UTF-8", headers:true, header_converters: :symbol, converters: :all})
+       hashed_topcompanies = topcompanies.map {|d| d.to_hash}
+       hashed_topcompanies.select {|topcompanies| topcompanies[:companyname].include?(workname)}.each do |s|
+         if s[:companyrank] <= 5
+           score += 100
+         elsif s[:companyrank] <= 10
+           score += 100
+         elsif s[:companyrank] <= 15
+           score += 100
+         end
        end
 
      end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations", omniauth_callbacks: "callbacks"}
   get 'recruiter/home'
   get 'recruiter/favoriteDevelopers'
+  get 'recruiter/suggestedDevelopers'
   get 'developer/home'
   get 'home/index'
   get 'skills/:skill', to: 'profiles#index', as: "skill"

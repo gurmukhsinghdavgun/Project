@@ -8,4 +8,9 @@ class RecruiterController < ApplicationController
     @favorites = @recruiter.favorite_profiles
   end
 
+  def suggestedDevelopers
+    profiles = Profile.all
+    @suggestedDevelopers = profiles.map { |profile| profile.similar_profiles  }
+  end
+
 end
