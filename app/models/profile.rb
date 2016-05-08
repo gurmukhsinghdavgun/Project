@@ -142,10 +142,16 @@ class Profile < ActiveRecord::Base
        hashed_topcompanies.select {|topcompanies| topcompanies[:companyname].include?(workname)}.each do |s|
          if s[:companyrank] <= 5
            score += 100
-         elsif s[:companyrank] <= 10
-           score += 100
-         elsif s[:companyrank] <= 15
-           score += 100
+         elsif s[:companyrank] >= 6 && s[:companyrank] <=10
+           score += 75
+         elsif s[:companyrank] >= 11 && s[:companyrank] <=50
+           score += 50
+         elsif s[:companyrank] >=51 && s[:companyrank] <= 100
+           score += 25
+         elsif s[:companyrank] >=101 && s[:companyrank] <= 200
+           score += 10
+         elsif s[:companyrank] >= 201 && s[:companyrank] <=300
+           score += 5
          end
        end
 
