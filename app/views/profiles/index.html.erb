@@ -13,8 +13,10 @@
             <label class="formlabel" for="skill">Minimum years of experience:</label>
             <%= f.text_field :experiance_gt, class: "form-control custom", placeholder: "e.g. 2 Years" %>
           </div>
-          <div class="universitylist">
-            <%= f.select :educations_university_eq, @universities, :include_blank => "Any University" ,:prompt => "Select university" %>
+          <div class="field">
+            <label class="formlabel" for="skill">Choose a university:</label><br>
+            <%= f.select :educations_university_eq, @universities, :include_blank => "Any University",
+             :prompt => "Select university", class: "form-control" %>
           </div>
       </div>
       <hr>

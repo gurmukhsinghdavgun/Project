@@ -161,6 +161,22 @@ class Profile < ActiveRecord::Base
    if self.educations.present?
      score += 5 * self.educations.count
      self.educations.each do |e|
+       universityname = e.university
+       topuniversities = CSV.read('lib/assets/topuniversities.csv',{encoding: "UTF-8", headers:true, header_converters: :symbol, converters: :all})
+       hashed_topuniversities = topuniversities.map {|d| d.to_hash}
+       hashed_topuniversities.select {|topuniversities| topuniversities[:universityname].include?(universityname)}.each do |s|
+         if s[:universityrank] <= 10
+           score += 100
+         elsif s[:universityrank] >= 11 && s[:universityrank] <=25
+           score += 75
+         elsif s[:universityrank] >= 26 && s[:universityrank] <=50
+           score += 50
+         elsif s[:universityrank] >=51 && s[:universityrank] <= 100
+           score += 25
+         elsif s[:universityrank] >=101 && s[:universityrank] <= 150
+           score += 10
+         end
+       end
        case e.level
          when "1st"
           score += 15
