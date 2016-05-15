@@ -109,11 +109,6 @@
 
 <% unless @profile.user.github_profile.nil? %>
   <div class="githubContainer">
-    <h4>From: <%= current_user.github_profile.location %></h4>
-    <h4>Public Repos: <%= current_user.github_profile.public_repo %></h4>
-    <h4>Public Gists: <%= current_user.github_profile.public_gists %></h4>
-    <h4>Followers: <%= current_user.github_profile.followers %></h4>
-    <h4>Following: <%= current_user.github_profile.following %></h4>
     <h1><span class="icon"><i class="fa fa-github fa-1x"></i></span>&nbsp;<b>Github Profile</b></h1>
     <div class="publicrepos">
       <% @repositories.each do |repo| %>

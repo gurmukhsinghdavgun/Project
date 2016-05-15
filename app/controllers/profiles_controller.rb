@@ -7,6 +7,8 @@ class ProfilesController < ApplicationController
   def index
     @search = Profile.search(params[:q])
     @profiles = @search.result(distinct: true).paginate(page: params[:page], per_page: params[:per_page])
+    u = Profile.all
+    @universities = u.map { |profile| profile.educations.map {|e| e.university}}.flatten
 
     #if params[:skill]
     #  @profiles = Profile.tagged_with(params[:id])
